@@ -1,0 +1,5594 @@
+{
+ "area": "cardiovascular",
+ "cell_types": [
+  {
+   "id": "cardiomyocyte",
+   "name": "Cardiomyocytes (ventricular-like)",
+   "aka": [
+    "hiPSC-CM",
+    "hPSC-CM",
+    "ventricular-like cardiomyocytes"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Contracting heart muscle cells; standard monolayer protocols give a mixed but mostly ventricular-like, fetal-like population. Used for disease modelling, cardiotoxicity and drug screening, electrophysiology and engineered heart tissue.",
+   "route": [
+    "Pluripotent",
+    "Mesendoderm",
+    "Cardiac mesoderm",
+    "Cardiac progenitor",
+    "Cardiomyocyte"
+   ],
+   "days_min": 10,
+   "days_max": 15,
+   "maturation_note": "Beating from about day 7-10; purity usually measured at day 15; ventricular-like electrophysiology and MLC2v expression increase over 30+ days.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "Sheets and thick strands of cells contracting in synchrony, with phase-bright ridges where the layer has piled up and flatter non-myocyte areas between them.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "Confluent hPSCs",
+      "archetype": "psc_colony",
+      "look": "A fully confluent layer of small, tightly packed cells with a high nucleus-to-cytoplasm ratio; no colony edges remain."
+     },
+     {
+      "day": 1,
+      "label": "Mesendoderm",
+      "archetype": "monolayer_dense",
+      "look": "After the CHIR pulse the layer loosens and some cells float; survivors are small, uniform and migratory."
+     },
+     {
+      "day": 5,
+      "label": "Cardiac progenitors",
+      "archetype": "monolayer_dense",
+      "look": "Dense multilayered sheet, darker and more textured, not yet beating."
+     },
+     {
+      "day": 8,
+      "label": "First beating",
+      "archetype": "cardiomyocytes",
+      "look": "Small twitching patches appear and spread into connected networks."
+     },
+     {
+      "day": 15,
+      "label": "Beating sheets",
+      "archetype": "cardiomyocytes",
+      "look": "Most of the well contracts as sheets and web-like strands."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury, T",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesendoderm",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Peaks about 24 h after CHIR; >90% expected in a good run."
+    },
+    {
+     "name": "MESP1",
+     "alias": "MESP1",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Cardiac mesoderm",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Transient, around days 2-3."
+    },
+    {
+     "name": "ISL1",
+     "alias": "ISL1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Cardiac progenitor",
+     "assays": [
+      "ICC",
+      "flow",
+      "qPCR"
+     ],
+     "note": "Progenitor marker from day 4-5."
+    },
+    {
+     "name": "NKX2-5",
+     "alias": "NKX2.5",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Cardiac progenitor",
+     "assays": [
+      "ICC",
+      "flow",
+      "qPCR"
+     ],
+     "note": "On from day 4-5 and maintained in working cardiomyocytes."
+    },
+    {
+     "name": "TNNT2",
+     "alias": "cardiac troponin T, cTnT",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Standard purity readout; 80-98% reported at day 15."
+    },
+    {
+     "name": "ACTN2",
+     "alias": "sarcomeric alpha-actinin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Shows striated sarcomeres after replating as single cells."
+    },
+    {
+     "name": "MYL7",
+     "alias": "MLC2a",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Present in all early hPSC-CMs; falls in ventricular cells with time."
+    },
+    {
+     "name": "MYL2",
+     "alias": "MLC2v",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "mature",
+     "stage_label": "Ventricular cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Ventricle-restricted; rises over weeks in culture."
+    },
+    {
+     "name": "TNNI3",
+     "alias": "cardiac troponin I",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "mature",
+     "stage_label": "Maturing cardiomyocyte",
+     "assays": [
+      "western",
+      "qPCR",
+      "ICC"
+     ],
+     "note": "Replaces the fetal isoform TNNI1 as cells mature."
+    },
+    {
+     "name": "ACTA2",
+     "alias": "alpha smooth muscle actin, SMA",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Smooth muscle / immature CM",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Co-stain with cTnT; cTnT-negative SMA+ cells are non-myocytes (immature CMs can also be SMA+)."
+    },
+    {
+     "name": "PECAM1",
+     "alias": "CD31",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Endothelial",
+     "assays": [
+      "flow"
+     ],
+     "note": "Minor endothelial contaminant."
+    }
+   ],
+   "functional_assays": [
+    "Spontaneous contraction (video)",
+    "Calcium transients",
+    "Patch-clamp action potentials",
+    "MEA field potentials"
+   ],
+   "qc": [
+    ">= 90% brachyury+ cells 24 h after CHIR99021 (Lian 2013)",
+    "Spontaneous beating by day 12 (Lian 2013); from about day 7 in CDM3 (Burridge 2014)",
+    "TNNT2+ >= 80% by flow at day 15",
+    ">95% TNNT2+ after lactate selection (Burridge 2014)"
+   ],
+   "protocols": [
+    {
+     "id": "lian-2013-giwi",
+     "cell_id": "cardiomyocyte",
+     "name": "GiWi: Wnt on, then Wnt off (small molecules, RPMI/B27)",
+     "type": "published",
+     "principle": "A 24 h pulse of the GSK3 inhibitor CHIR99021 pushes a confluent hPSC monolayer into mesendoderm; blocking Wnt secretion with IWP2 two days later steers that mesoderm to a cardiac fate. No growth factors are needed.",
+     "source": {
+      "authors": "Lian X, Zhang J, Azarin SM, et al.",
+      "year": 2013,
+      "journal": "Nat Protoc",
+      "title": "Directed cardiomyocyte differentiation from human pluripotent stem cells by modulating Wnt/β-catenin signaling under fully defined conditions.",
+      "doi": "10.1038/nprot.2012.150",
+      "pmid": "23257984",
+      "url": "https://doi.org/10.1038/nprot.2012.150"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 15,
+     "efficiency": "80-98% cTnT+ cells after two weeks across the six hESC/iPSC lines tested",
+     "start_requirements": "hPSCs kept in mTeSR1 on hPSC-qualified Matrigel or Synthemax, passaged without enzymes (Versene). At day -4, singularise with Accutase and plate 0.5-1.5 million cells per well of a 12-well plate in mTeSR1 + 5 µM Y-27632; feed mTeSR1 daily on days -3 to -1 so the well is fully confluent on day 0.",
+     "stages": [
+      {
+       "name": "Mesendoderm induction (Wnt on)",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "12 µM (test 6-14 µM per line)",
+         "role": "GSK3 inhibitor; activates canonical Wnt"
+        }
+       ],
+       "feeding": "Single dose, removed after exactly 24 h",
+       "actions": [
+        "Start only when the monolayer is fully confluent",
+        "Add 2 ml per 12-well of RPMI/B27-minus-insulin with CHIR99021 and write down the time",
+        "Change medium exactly 24 h later"
+       ],
+       "checkpoint": "At 24 h at least 90% of cells should be brachyury (TBXT) positive by flow."
+      },
+      {
+       "name": "Rest in basal medium",
+       "day_start": 1,
+       "day_end": 3,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "One change on day 1, then leave for 48 h",
+       "actions": [
+        "Replace with 2 ml fresh RPMI/B27-minus-insulin on day 1",
+        "Do not disturb until day 3"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac specification (Wnt off)",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "RPMI 1640 + B-27 minus insulin (half conditioned, half fresh)",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "5 µM (IWP4 is an alternative)",
+         "role": "Porcupine inhibitor; blocks Wnt secretion"
+        }
+       ],
+       "feeding": "Single dose at 72 h for 48 h",
+       "actions": [
+        "At 72 h take 1 ml of the old medium from the well and mix with 1 ml fresh medium ('combined medium')",
+        "Add IWP2 to the combined medium, rock the plate to lift debris, aspirate the rest and add the 2 ml back"
+       ],
+       "checkpoint": "NKX2-5 and ISL1 transcripts appear from day 4, protein from day 5."
+      },
+      {
+       "name": "Progenitor expansion",
+       "day_start": 5,
+       "day_end": 7,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "One change on day 5",
+       "actions": [
+        "Replace with 2 ml RPMI/B27-minus-insulin"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiomyocyte maintenance",
+       "day_start": 7,
+       "day_end": 15,
+       "base_medium": "RPMI 1640 + B-27 (with insulin)",
+       "factors": [],
+       "feeding": "Change every 3 days",
+       "actions": [
+        "Switch to complete B-27 on day 7",
+        "Feed every 3 days; score beating areas",
+        "Quantify cTnT by flow at day 15"
+       ],
+       "checkpoint": "cTnT detectable at day 8; first beating around day 8-10 and robust contraction by day 12."
+      }
+     ],
+     "materials": [
+      "Matrigel (hPSC-qualified) or Synthemax plates",
+      "mTeSR1",
+      "Accutase, Versene",
+      "Y-27632",
+      "RPMI 1640",
+      "B-27 supplement minus insulin",
+      "B-27 supplement",
+      "CHIR99021",
+      "IWP2 or IWP4",
+      "Antibodies: brachyury, cTnT (TNNT2), MLC2a, SMA"
+     ],
+     "tips": [
+      "Titrate seeding density first (0.5, 0.75, 1.0, 1.25, 1.5 million per 12-well) and keep the best one for that line.",
+      "The CHIR99021 optimum is line-dependent; the authors found 12 µM best for their six lines but recommend testing 6-14 µM.",
+      "Insulin is withheld until day 7 because it lowers yield during the early stages.",
+      "Cells can be kept beating in RPMI/B27 for months; metabolic (lactate) selection, as in Burridge 2014 or Tohyama 2013 (PMID 23168164), is commonly added afterwards to raise purity."
+     ],
+     "pitfalls": [
+      "Sheet death or lifting after the CHIR pulse: density wrong, CHIR dose too high or left on too long.",
+      "No beating by day 12 / low cTnT at day 15: suboptimal density, or IWP2 dose or timing off; check brachyury at 24 h and NKX2-5 at day 5.",
+      "Timing matters: the 24 h CHIR and 72 h IWP2 time points should be kept to within an hour or two."
+     ],
+     "unverified": []
+    },
+    {
+     "id": "burridge-2014-cdm3",
+     "cell_id": "cardiomyocyte",
+     "name": "CDM3: chemically defined three-component medium",
+     "type": "published",
+     "principle": "Same Wnt on/off logic as GiWi, but B-27 is replaced by a medium of only RPMI 1640, recombinant human albumin and ascorbic acid 2-phosphate, with Wnt-C59 as the Wnt inhibitor. Glucose-free lactate medium then enriches the cardiomyocytes.",
+     "source": {
+      "authors": "Burridge PW, Matsa E, Shukla P, et al.",
+      "year": 2014,
+      "journal": "Nat Methods",
+      "title": "Chemically defined generation of human cardiomyocytes.",
+      "doi": "10.1038/nmeth.2999",
+      "pmid": "24930130",
+      "url": "https://doi.org/10.1038/nmeth.2999"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 15,
+     "efficiency": "80-95% TNNT2+ by flow at day 15 across the hESC/hiPSC lines tested; >95% after lactate selection",
+     "start_requirements": "hPSCs adapted to E8 with EDTA passaging for at least 5 passages, on Synthemax II-SC, Matrigel (1:200) or, for long-term adhesion, laminin-521 / laminin-511 E8 fragment. Split 1:10-1:12 with 0.5 mM EDTA (2 µM thiazovivin for the first 24 h) and grow 4 days to about 85% confluence.",
+     "stages": [
+      {
+       "name": "Mesoderm induction (Wnt on)",
+       "day_start": 0,
+       "day_end": 2,
+       "base_medium": "CDM3 (RPMI 1640 + 500 µg/ml recombinant human albumin + 213 µg/ml L-ascorbic acid 2-phosphate)",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "6 µM",
+         "role": "GSK3 inhibitor; activates canonical Wnt"
+        }
+       ],
+       "feeding": "Single 48 h exposure",
+       "actions": [
+        "Switch from E8 to CDM3 + CHIR99021 at ~85% confluence"
+       ],
+       "checkpoint": "POU5F1 falls and T/MIXL1 rise by day 2 (qPCR)."
+      },
+      {
+       "name": "Cardiac specification (Wnt off)",
+       "day_start": 2,
+       "day_end": 4,
+       "base_medium": "CDM3",
+       "factors": [
+        {
+         "name": "Wnt-C59",
+         "conc": "2 µM",
+         "role": "Porcupine inhibitor; blocks Wnt secretion"
+        }
+       ],
+       "feeding": "Single 48 h exposure",
+       "actions": [
+        "Replace medium with CDM3 + Wnt-C59 on day 2"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiomyocyte differentiation",
+       "day_start": 4,
+       "day_end": 10,
+       "base_medium": "CDM3",
+       "factors": [],
+       "feeding": "Change every 48 h",
+       "actions": [
+        "Change to plain CDM3 on day 4 and every other day"
+       ],
+       "checkpoint": "Contracting cells from about day 7."
+      },
+      {
+       "name": "Optional metabolic purification",
+       "day_start": 10,
+       "day_end": 20,
+       "base_medium": "RPMI 1640 without glucose + 500 µg/ml recombinant human albumin + 213 µg/ml L-ascorbic acid 2-phosphate",
+       "factors": [
+        {
+         "name": "Sodium DL-lactate",
+         "conc": "5 mM",
+         "role": "Sole carbon source; non-cardiomyocytes die without glucose"
+        }
+       ],
+       "feeding": "Change every 48 h (same schedule as CDM3)",
+       "actions": [
+        "Replace CDM3 with the glucose-free lactate medium from day 10",
+        "Return to CDM3 after selection"
+       ],
+       "checkpoint": "Purity rises from about 85% to >95% TNNT2+ after 6-10 days without glucose."
+      }
+     ],
+     "materials": [
+      "E8 medium",
+      "0.5 mM EDTA",
+      "Thiazovivin",
+      "Synthemax II-SC, Matrigel or laminin-521 / iMatrix-511",
+      "RPMI 1640 (with and without glucose)",
+      "Recombinant human albumin (rice-derived)",
+      "L-ascorbic acid 2-phosphate",
+      "CHIR99021",
+      "Wnt-C59",
+      "Sodium DL-lactate"
+     ],
+     "tips": [
+      "Laminin-based matrices kept the beating sheets attached long term; on vitronectin peptide the sheets tended to peel off around day 15.",
+      "Yield reported as more than 3 x 10^5 cardiomyocytes per cm2.",
+      "B-27 contains galactose, so lactate selection has to be done in a B-27-free medium such as this one.",
+      "At day 15-20 action potentials look immature; ventricular-like cells predominate by day 30-35."
+     ],
+     "pitfalls": [
+      "Ascorbic acid 2-phosphate is essential: without it the cells die.",
+      "Leaving out albumin does not kill the culture but sharply reduces yield.",
+      "The state of the starting hPSC culture drives efficiency; the authors required E8/EDTA adaptation before differentiating."
+     ],
+     "unverified": []
+    }
+   ],
+   "notes": "Efficiency depends strongly on the hPSC line, seeding density and CHIR99021 dose (12 µM for 24 h in RPMI/B27 versus 6 µM for 48 h in CDM3), so titrate both for each line. The product is an immature, mixed population (mostly ventricular-like with some atrial- and nodal-like cells); use the dedicated atrial or pacemaker protocols when subtype matters."
+  },
+  {
+   "id": "atrial_cardiomyocyte",
+   "name": "Atrial cardiomyocytes",
+   "aka": [
+    "hiPSC-aCM",
+    "atrial-like cardiomyocytes"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Working cardiomyocytes of the atria, with shorter action potentials and atrial-specific currents (IKur, IK,ACh). hPSC-derived atrial cells are used to model atrial fibrillation and to test atrial-selective drugs.",
+   "route": [
+    "Pluripotent",
+    "Mesoderm",
+    "Cardiac mesoderm + retinoic acid",
+    "Atrial progenitor",
+    "Atrial cardiomyocyte"
+   ],
+   "days_min": 10,
+   "days_max": 20,
+   "maturation_note": "Beating from about day 8-10; atrial identity is usually assessed from day 20-30 and by electrophysiology later still.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "Beating sheets or EBs that look like standard hPSC-cardiomyocytes but usually contract faster; subtype cannot be judged by eye.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "hPSCs",
+      "archetype": "psc_colony",
+      "look": "Near-confluent hPSC layer (monolayer route) or freshly formed aggregates (EB route)."
+     },
+     {
+      "day": 2,
+      "label": "Mesoderm",
+      "archetype": "monolayer_dense",
+      "look": "Loosened, migratory small cells after Wnt activation."
+     },
+     {
+      "day": 5,
+      "label": "Cardiac mesoderm under retinoic acid",
+      "archetype": "monolayer_dense",
+      "look": "Dense multilayered sheet, not yet beating."
+     },
+     {
+      "day": 10,
+      "label": "First beating",
+      "archetype": "cardiomyocytes",
+      "look": "Twitching patches merge into networks."
+     },
+     {
+      "day": 20,
+      "label": "Atrial-like cardiomyocytes",
+      "archetype": "cardiomyocytes",
+      "look": "Rapidly beating sheets; smaller cells than ventricular cultures after replating."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "flow",
+      "qPCR"
+     ],
+     "note": "Early mesoderm check."
+    },
+    {
+     "name": "ALDH1A2",
+     "alias": "RALDH2",
+     "kind": "protein",
+     "localization": "cytoplasmic",
+     "stage": "intermediate",
+     "stage_label": "Atrial-competent mesoderm",
+     "assays": [
+      "flow",
+      "qPCR"
+     ],
+     "note": "Marks the mesoderm that gives atrial cells (Lee 2017)."
+    },
+    {
+     "name": "TNNT2",
+     "alias": "cardiac troponin T",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Overall cardiomyocyte purity."
+    },
+    {
+     "name": "NR2F2",
+     "alias": "COUP-TFII",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR",
+      "western"
+     ],
+     "note": "Induced by retinoic acid; strongly enriched over ventricular cultures."
+    },
+    {
+     "name": "NR2F1",
+     "alias": "COUP-TFI",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Atrial-enriched nuclear receptor."
+    },
+    {
+     "name": "MYL7",
+     "alias": "MLC2a",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Stays high in atrial cells while MLC2v stays off."
+    },
+    {
+     "name": "NPPA",
+     "alias": "ANP",
+     "kind": "protein",
+     "localization": "secreted",
+     "stage": "target",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "qPCR",
+      "ICC"
+     ],
+     "note": "Atrial natriuretic peptide."
+    },
+    {
+     "name": "KCNA5",
+     "alias": "Kv1.5",
+     "kind": "gene",
+     "localization": "membrane",
+     "stage": "mature",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "qPCR",
+      "functional"
+     ],
+     "note": "Carries IKur; functional test with a selective blocker."
+    },
+    {
+     "name": "KCNJ3",
+     "alias": "Kir3.1",
+     "kind": "gene",
+     "localization": "membrane",
+     "stage": "mature",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "qPCR",
+      "functional"
+     ],
+     "note": "IK,ACh subunit; carbachol-sensitive current."
+    },
+    {
+     "name": "SLN",
+     "alias": "sarcolipin",
+     "kind": "gene",
+     "localization": "membrane",
+     "stage": "mature",
+     "stage_label": "Atrial cardiomyocyte",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Atrial-specific SERCA regulator."
+    },
+    {
+     "name": "MYL2",
+     "alias": "MLC2v",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Ventricular cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Should be low or absent."
+    },
+    {
+     "name": "IRX4",
+     "alias": "IRX4",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "off-target",
+     "stage_label": "Ventricular cardiomyocyte",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Ventricular transcription factor; should be down."
+    }
+   ],
+   "functional_assays": [
+    "Patch-clamp action potentials (short, triangular)",
+    "IKur and IK,ACh currents / response to carbachol",
+    "Optical action potentials or MEA",
+    "Calcium transients"
+   ],
+   "qc": [
+    "cTnT+ around 87-90% at day 20 (Cyganek 2018)",
+    "Predominantly MLC2a+/MLC2v- cardiomyocytes in long-term culture (Cyganek 2018)",
+    "NR2F1/NR2F2 up and MYL2/IRX4 down versus a no-retinoic-acid control (Devalla 2015)"
+   ],
+   "protocols": [
+    {
+     "id": "cyganek-2018-ra-monolayer",
+     "cell_id": "atrial_cardiomyocyte",
+     "name": "Monolayer Wnt on/off plus retinoic acid on days 3-6",
+     "type": "published",
+     "principle": "A standard CHIR99021 then IWP2 monolayer differentiation in albumin/ascorbate RPMI; adding 1 µM retinoic acid during cardiac mesoderm specification redirects the cells from a ventricular to an atrial fate.",
+     "source": {
+      "authors": "Cyganek L, Tiburcy M, Sekeres K, et al.",
+      "year": 2018,
+      "journal": "JCI Insight",
+      "title": "Deep phenotyping of human induced pluripotent stem cell-derived atrial and ventricular cardiomyocytes.",
+      "doi": "10.1172/jci.insight.99941",
+      "pmid": "29925689",
+      "url": "https://doi.org/10.1172/jci.insight.99941"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 20,
+     "efficiency": "About 87-90% cTnT+ at day 20; in RA-treated cultures about 95% of cardiomyocytes were MLC2a+/MLC2v- at around day 100 (versus about 11% in controls)",
+     "start_requirements": "hiPSCs on Geltrex-coated plates grown to 80-90% confluence.",
+     "stages": [
+      {
+       "name": "Mesoderm induction (Wnt on)",
+       "day_start": 0,
+       "day_end": 2,
+       "base_medium": "RPMI 1640 with GlutaMAX and HEPES + 0.5 mg/ml recombinant human albumin + 0.2 mg/ml L-ascorbic acid 2-phosphate",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "4 µM",
+         "role": "GSK3 inhibitor; activates canonical Wnt"
+        }
+       ],
+       "feeding": "48 h",
+       "actions": [
+        "Start at 80-90% confluence"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac specification (Wnt off) with atrial patterning",
+       "day_start": 2,
+       "day_end": 4,
+       "base_medium": "Same albumin/ascorbate RPMI",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "5 µM",
+         "role": "Porcupine inhibitor; blocks Wnt secretion"
+        },
+        {
+         "name": "Retinoic acid",
+         "conc": "1 µM (from day 3)",
+         "role": "Atrial specification of cardiac mesoderm"
+        }
+       ],
+       "feeding": "IWP2 for 48 h; retinoic acid added from day 3",
+       "actions": [
+        "Add IWP2 on day 2",
+        "Begin retinoic acid on day 3"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Retinoic acid continued",
+       "day_start": 4,
+       "day_end": 6,
+       "base_medium": "Same albumin/ascorbate RPMI",
+       "factors": [
+        {
+         "name": "Retinoic acid",
+         "conc": "1 µM",
+         "role": "Atrial specification"
+        }
+       ],
+       "feeding": "Until day 6",
+       "actions": [
+        "Remove IWP2; keep retinoic acid until day 6"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiomyocyte differentiation",
+       "day_start": 6,
+       "day_end": 8,
+       "base_medium": "Same albumin/ascorbate RPMI",
+       "factors": [],
+       "feeding": "Regular changes",
+       "actions": [
+        "Continue in differentiation medium without factors"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Maintenance",
+       "day_start": 8,
+       "day_end": 15,
+       "base_medium": "RPMI 1640 with GlutaMAX and HEPES + 2% B-27",
+       "factors": [],
+       "feeding": "Regular changes",
+       "actions": [
+        "Switch to B-27 medium from day 8",
+        "Replate around day 15"
+       ],
+       "checkpoint": "Beating monolayers."
+      },
+      {
+       "name": "Metabolic selection",
+       "day_start": 15,
+       "day_end": 20,
+       "base_medium": "Glucose-free RPMI 1640 + 0.5 mg/ml albumin + 0.2 mg/ml ascorbate",
+       "factors": [
+        {
+         "name": "Lactate",
+         "conc": "4 mM",
+         "role": "Sole carbon source; removes non-cardiomyocytes"
+        }
+       ],
+       "feeding": "5 days",
+       "actions": [
+        "Apply after replating",
+        "Return to B-27 medium afterwards"
+       ],
+       "checkpoint": null
+      }
+     ],
+     "materials": [
+      "Geltrex",
+      "RPMI 1640 with GlutaMAX and HEPES",
+      "Recombinant human albumin",
+      "L-ascorbic acid 2-phosphate",
+      "CHIR99021",
+      "IWP2",
+      "All-trans retinoic acid",
+      "B-27 supplement",
+      "Glucose-free RPMI 1640",
+      "Lactate"
+     ],
+     "tips": [
+      "Run a no-retinoic-acid well in parallel: it gives the matched ventricular control used throughout the paper.",
+      "Retinoic acid is light-sensitive; make fresh dilutions and protect from light.",
+      "Subtype identity (MLC2a versus MLC2v) sharpens with long culture; the paper's subtype percentages are from about day 100."
+     ],
+     "pitfalls": [
+      "Retinoic acid dose and window matter: later papers report that the atrial action-potential phenotype depends on the RA concentration, so do not assume 1 µM on days 3-6 transfers unchanged to every line.",
+      "MLC2a alone is not proof of atrial identity in young cultures because all early hPSC-CMs express it; confirm with NR2F2, KCNA5, NPPA or electrophysiology."
+     ],
+     "unverified": [
+      "Day labels for the CHIR99021 (0-2) and IWP2 (2-4) steps are inferred from the stated consecutive 48 h treatments; the Methods as read gave durations, not day numbers.",
+      "Medium-change frequency and the exact replating day before lactate selection were not captured.",
+      "Whether the day-8 B-27 is the insulin-containing formulation is not stated explicitly in the text read."
+     ]
+    },
+    {
+     "id": "devalla-2015-spin-eb-ra",
+     "cell_id": "atrial_cardiomyocyte",
+     "name": "Spin embryoid bodies with retinoic acid from day 4",
+     "type": "published",
+     "principle": "Growth-factor-induced cardiac mesoderm in spin EBs (BPEL medium) is exposed to 1 µM retinoic acid on days 4-7, which induces COUP-TFI/II and an atrial gene and ion-channel programme.",
+     "source": {
+      "authors": "Devalla HD, Schwach V, Ford JW, et al.",
+      "year": 2015,
+      "journal": "EMBO Mol Med",
+      "title": "Atrial-like cardiomyocytes from human pluripotent stem cells are a robust preclinical model for assessing atrial-selective pharmacology.",
+      "doi": "10.15252/emmm.201404757",
+      "pmid": "25700171",
+      "url": "https://doi.org/10.15252/emmm.201404757"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "embryoid bodies",
+     "duration_days": 17,
+     "efficiency": "About 50% NKX2-5-GFP+ cells with retinoic acid versus about 65% in the untreated control",
+     "start_requirements": "NKX2-5-eGFP reporter hESCs maintained on irradiated mouse embryonic fibroblasts; harvested and aggregated as spin EBs on day 0.",
+     "stages": [
+      {
+       "name": "Spin EB formation and mesoderm induction",
+       "day_start": 0,
+       "day_end": 3,
+       "base_medium": "BPEL",
+       "factors": [
+        {
+         "name": "Activin A",
+         "conc": "20-30 ng/ml",
+         "role": "Nodal-like mesendoderm inducer"
+        },
+        {
+         "name": "BMP4",
+         "conc": "20-30 ng/ml",
+         "role": "Mesoderm inducer"
+        },
+        {
+         "name": "SCF",
+         "conc": "40 ng/ml",
+         "role": "Supports EB growth"
+        },
+        {
+         "name": "VEGF",
+         "conc": "30 ng/ml",
+         "role": "Cardiovascular mesoderm support"
+        },
+        {
+         "name": "CHIR99021",
+         "conc": "1.5 µM",
+         "role": "GSK3 inhibitor; Wnt activation"
+        }
+       ],
+       "feeding": "No change until day 3",
+       "actions": [
+        "Resuspend harvested hESCs in BPEL with the factors and spin into aggregates"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Refresh",
+       "day_start": 3,
+       "day_end": 4,
+       "base_medium": "BPEL",
+       "factors": [],
+       "feeding": "Medium refreshed on day 3",
+       "actions": [
+        "Replace with plain BPEL"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Atrial specification",
+       "day_start": 4,
+       "day_end": 7,
+       "base_medium": "BPEL",
+       "factors": [
+        {
+         "name": "All-trans retinoic acid",
+         "conc": "1 µM",
+         "role": "Atrial patterning; induces NR2F1/NR2F2"
+        }
+       ],
+       "feeding": "Added on day 4; refreshed with plain BPEL on day 7",
+       "actions": [
+        "Add retinoic acid on day 4",
+        "Change to BPEL on day 7"
+       ],
+       "checkpoint": "COUP-TFI/II transcripts rise within 24 h of retinoic acid."
+      },
+      {
+       "name": "Maturation",
+       "day_start": 7,
+       "day_end": 17,
+       "base_medium": "BPEL",
+       "factors": [],
+       "feeding": "Not stated in the text read",
+       "actions": [
+        "Transfer EBs to gelatin-coated dishes on day 7",
+        "Dissociate with TrypLE Select around day 17 for electrophysiology"
+       ],
+       "checkpoint": "Beating EBs; atrial-like action potentials when patched 10-14 days after dissociation."
+      }
+     ],
+     "materials": [
+      "BPEL medium",
+      "Activin A",
+      "BMP4",
+      "SCF",
+      "VEGF",
+      "CHIR99021",
+      "All-trans retinoic acid",
+      "Gelatin-coated dishes",
+      "TrypLE Select"
+     ],
+     "tips": [
+      "The no-retinoic-acid arm of the same protocol gives ventricular-like cells for comparison.",
+      "Atrial readouts used: NR2F1/NR2F2 (COUP-TFI/II), KCNA5, KCNJ3, SLN, NPPA and PITX2 up; MYL2, IRX4, HEY2 and HAND1 down."
+     ],
+     "pitfalls": [
+      "Retinoic acid lowers the fraction of NKX2-5+ cells, so total cardiomyocyte yield is below that of the control arm.",
+      "The published work used hESCs on feeders and a reporter line; expect to re-optimise growth-factor doses (given as 20-30 ng/ml ranges) for feeder-free iPSCs."
+     ],
+     "unverified": [
+      "EB size (cells per aggregate) and feeding schedule after day 7 were not captured from the text read."
+     ]
+    },
+    {
+     "id": "lim-2024-atrial-eb-lee-protocol",
+     "cell_id": "atrial_cardiomyocyte",
+     "name": "Keller/Protze-lab EB protocol: atrial mesoderm plus retinoic acid on days 3-5",
+     "type": "published",
+     "principle": "Atrial cardiomyocytes arise from a different mesoderm than ventricular ones: mesoderm is induced with lower BMP4 and Activin A than for the ventricular fate, then retinoic acid is given together with the Wnt inhibitor on days 3-5.",
+     "source": {
+      "authors": "Lim AA, Pouyabahar D, Ashraf M, et al.",
+      "year": 2024,
+      "journal": "Nat Commun",
+      "title": "Single-cell transcriptome analysis reveals CD34 as a marker of human sinoatrial node pacemaker cardiomyocytes.",
+      "doi": "10.1038/s41467-024-54337-4",
+      "pmid": "39604360",
+      "url": "https://doi.org/10.1038/s41467-024-54337-4"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "embryoid bodies",
+     "duration_days": 25,
+     "efficiency": null,
+     "start_requirements": "hPSCs at about 80% confluence, dissociated to single cells with TrypLE. EBs are kept in suspension on poly-HEMA-coated dishes under 5% O2 until day 11, then ambient oxygen.",
+     "stages": [
+      {
+       "name": "EB formation",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "Base medium (StemPro-34 with 2 mM L-glutamine, 50 µg/ml ascorbic acid, 75 µg/ml transferrin, 50 µg/ml monothioglycerol) used at 20% in IMDM, + 0.01x ITS-X",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "1 ng/ml",
+         "role": "Primes mesoderm"
+        },
+        {
+         "name": "Y-27632",
+         "conc": "10 µM",
+         "role": "ROCK inhibitor; survival"
+        },
+        {
+         "name": "DNase I",
+         "conc": "250 U/ml",
+         "role": "Prevents clumping"
+        }
+       ],
+       "feeding": "18 h on an orbital shaker (80 rpm)",
+       "actions": [
+        "Suspend single cells at 1 x 10^6 cells/ml in low-attachment 6 cm dishes",
+        "Culture at 5% O2"
+       ],
+       "checkpoint": "Small uniform aggregates after 18 h."
+      },
+      {
+       "name": "Atrial mesoderm induction",
+       "day_start": 1,
+       "day_end": 3,
+       "base_medium": "Base medium, 100% StemPro-34",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "1 µM",
+         "role": "Wnt activation"
+        },
+        {
+         "name": "bFGF",
+         "conc": "2.5 ng/ml",
+         "role": "Mesoderm support"
+        },
+        {
+         "name": "BMP4",
+         "conc": "4 ng/ml",
+         "role": "Mesoderm inducer (lower than the 10 ng/ml used for ventricular mesoderm)"
+        },
+        {
+         "name": "Activin A",
+         "conc": "3 ng/ml",
+         "role": "Mesoderm patterning (lower than the 8 ng/ml used for ventricular mesoderm)"
+        }
+       ],
+       "feeding": "Single addition",
+       "actions": [
+        "Move EBs into mesoderm induction medium on day 1"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac induction with atrial patterning",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "Base medium, 100% StemPro-34",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "1 µM",
+         "role": "Blocks Wnt secretion"
+        },
+        {
+         "name": "VEGF",
+         "conc": "10 ng/ml",
+         "role": "Cardiovascular support"
+        },
+        {
+         "name": "Retinoic acid",
+         "conc": "0.5 µM",
+         "role": "Atrial specification"
+        }
+       ],
+       "feeding": "Single addition",
+       "actions": [
+        "Wash EBs once with IMDM before changing medium on day 3"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Maintenance",
+       "day_start": 5,
+       "day_end": 25,
+       "base_medium": "Base medium, 20% StemPro-34 in IMDM",
+       "factors": [
+        {
+         "name": "VEGF",
+         "conc": "5 ng/ml (omit from day 11)",
+         "role": "Support"
+        }
+       ],
+       "feeding": "Change every 3-4 days",
+       "actions": [
+        "Move to ambient oxygen on day 11",
+        "Analyse around day 25 (SIRPA+ CD90- cardiomyocytes)"
+       ],
+       "checkpoint": "Beating EBs."
+      }
+     ],
+     "materials": [
+      "StemPro-34",
+      "IMDM",
+      "ITS-X",
+      "L-glutamine, ascorbic acid, transferrin, monothioglycerol",
+      "BMP4, Activin A, bFGF, VEGF",
+      "CHIR99021",
+      "IWP2",
+      "Retinoic acid",
+      "Y-27632",
+      "DNase I",
+      "Poly-HEMA-coated low-attachment dishes",
+      "Hypoxia incubator (5% O2)"
+     ],
+     "tips": [
+      "The concept and original protocol are from Lee JH et al. 2017 Cell Stem Cell (PMID 28777944, doi 10.1016/j.stem.2017.07.003): atrial and ventricular cardiomyocytes derive from distinct mesoderm populations distinguishable by RALDH2 and CD235a.",
+      "The matched ventricular arm uses 10 ng/ml BMP4 and 8 ng/ml Activin A on days 1-3 and no retinoic acid.",
+      "BMP4 and Activin A doses for mesoderm induction are line-dependent in this system and are normally titrated per line."
+     ],
+     "pitfalls": [
+      "Needs a hypoxia incubator and an orbital shaker; more hands-on than monolayer methods.",
+      "Giving retinoic acid to the wrong (ventricular-type) mesoderm does not produce good atrial cells; the mesoderm induction doses matter as much as the retinoic acid."
+     ],
+     "unverified": [
+      "Concentrations and timings are the current version of the protocol as written in Lim et al. 2024 (same laboratory), who state it follows their earlier protocols 'with modifications'; the Methods of Lee et al. 2017 itself could not be accessed, so differences from the original are not documented here.",
+      "No efficiency figure for the atrial arm was captured."
+     ]
+    }
+   ],
+   "notes": "Always differentiate a no-retinoic-acid control alongside; atrial identity is defined relative to it. Retinoic acid dose and window differ between protocols (1 µM on days 3-6 in monolayer, 1 µM on days 4-7 in spin EBs, 0.5 µM on days 3-5 in the Toronto EB system) and are line-dependent."
+  },
+  {
+   "id": "pacemaker_cardiomyocyte",
+   "name": "Sinoatrial node pacemaker cells",
+   "aka": [
+    "SAN-like pacemaker cells",
+    "SANLPC",
+    "nodal cardiomyocytes"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Specialised, NKX2-5-negative cardiomyocytes of the sinoatrial node that fire spontaneously and set heart rate. hPSC-derived versions are used to study automaticity and sinus node disease and as candidate biological pacemakers.",
+   "route": [
+    "Pluripotent",
+    "Mesoderm",
+    "Posterior cardiac mesoderm (BMP + retinoic acid, FGF/TGF-beta off)",
+    "SAN progenitor",
+    "Pacemaker cardiomyocyte"
+   ],
+   "days_min": 19,
+   "days_max": 25,
+   "maturation_note": "Beating from about day 10; pacemaker identity and sorting are usually assessed at day 19-25.",
+   "difficulty": 3,
+   "culture_format": "embryoid bodies",
+   "morphology": {
+    "endpoint": "Small, fast and regularly beating clusters or EBs; cells are smaller and less striated than working cardiomyocytes, but identity needs markers or electrophysiology.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "hPSCs / fresh aggregates",
+      "archetype": "psc_colony",
+      "look": "Near-confluent hPSCs (monolayer) or single cells aggregating overnight (EB route)."
+     },
+     {
+      "day": 1,
+      "label": "Embryoid bodies",
+      "archetype": "spheres",
+      "look": "Small smooth aggregates in suspension."
+     },
+     {
+      "day": 4,
+      "label": "Cardiac mesoderm under patterning",
+      "archetype": "spheres",
+      "look": "EBs enlarge slightly; no beating yet."
+     },
+     {
+      "day": 10,
+      "label": "First beating",
+      "archetype": "cardiomyocytes",
+      "look": "EBs or patches begin contracting, faster than ventricular controls."
+     },
+     {
+      "day": 25,
+      "label": "Pacemaker-like cardiomyocytes",
+      "archetype": "cardiomyocytes",
+      "look": "Rhythmic, rapidly beating EBs or clusters."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "flow",
+      "qPCR"
+     ],
+     "note": "Early mesoderm check."
+    },
+    {
+     "name": "TNNT2",
+     "alias": "cardiac troponin T",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Total cardiomyocyte content (60-90% in the monolayer protocol)."
+    },
+    {
+     "name": "SIRPA",
+     "alias": "CD172a",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow"
+     ],
+     "note": "Surface gate for cardiomyocytes (SIRPA+ CD90-)."
+    },
+    {
+     "name": "SHOX2",
+     "alias": "SHOX2",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Pacemaker cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Core sinoatrial transcription factor."
+    },
+    {
+     "name": "TBX3",
+     "alias": "TBX3",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Pacemaker cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Represses the working-myocardium programme."
+    },
+    {
+     "name": "ISL1",
+     "alias": "ISL1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Pacemaker cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Stays on in pacemaker cells."
+    },
+    {
+     "name": "TBX18",
+     "alias": "TBX18",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "SAN progenitor",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Sinus venosus / SAN head progenitors."
+    },
+    {
+     "name": "HCN4",
+     "alias": "HCN4",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "target",
+     "stage_label": "Pacemaker cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR",
+      "functional"
+     ],
+     "note": "Funny-current channel; ivabradine-sensitive rate."
+    },
+    {
+     "name": "CD34",
+     "alias": "CD34",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Pacemaker cardiomyocyte",
+     "assays": [
+      "flow"
+     ],
+     "note": "Reported surface marker for sorting SAN-like cells within SIRPA+ CD90- cardiomyocytes (Lim 2024)."
+    },
+    {
+     "name": "NKX2-5",
+     "alias": "NKX2.5",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "off-target",
+     "stage_label": "Working cardiomyocyte",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Should be low or absent in pacemaker cells."
+    },
+    {
+     "name": "MYL2",
+     "alias": "MLC2v",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Ventricular cardiomyocyte",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Ventricular contaminant."
+    },
+    {
+     "name": "WT1",
+     "alias": "WT1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "off-target",
+     "stage_label": "Proepicardial cells",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Side population when Wnt inhibition is insufficient."
+    }
+   ],
+   "functional_assays": [
+    "Spontaneous beating rate (faster than working cardiomyocytes)",
+    "Patch-clamp: pacemaker action potentials with diastolic depolarisation, funny current (If)",
+    "Rate response to ivabradine and to adrenergic/cholinergic agonists",
+    "Pacing of co-cultured ventricular monolayers or tissue"
+   ],
+   "qc": [
+    "Contraction from about day 10 with faster beating than the ventricular control (Wiesinger 2022)",
+    "SHOX2, TBX3, ISL1, HCN4 up and NKX2-5 down versus the control arm",
+    "NKX2-5-negative, CD34+ fraction within SIRPA+ CD90- cardiomyocytes at day 25 (Lim 2024)"
+   ],
+   "protocols": [
+    {
+     "id": "lim-2024-san-eb-protze-protocol",
+     "cell_id": "pacemaker_cardiomyocyte",
+     "name": "Protze-lab EB protocol: BMP4 + retinoic acid with TGF-beta and FGF inhibition",
+     "type": "published",
+     "principle": "Low-dose mesoderm induction followed, at the cardiac mesoderm stage, by BMP4 and retinoic acid while Activin/TGF-beta and FGF signalling are blocked; this yields NKX2-5-negative sinoatrial-node-like pacemaker cardiomyocytes instead of working myocardium.",
+     "source": {
+      "authors": "Lim AA, Pouyabahar D, Ashraf M, et al.",
+      "year": 2024,
+      "journal": "Nat Commun",
+      "title": "Single-cell transcriptome analysis reveals CD34 as a marker of human sinoatrial node pacemaker cardiomyocytes.",
+      "doi": "10.1038/s41467-024-54337-4",
+      "pmid": "39604360",
+      "url": "https://doi.org/10.1038/s41467-024-54337-4"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "embryoid bodies",
+     "duration_days": 25,
+     "efficiency": "Mixed cultures of NKX2-5-negative pacemaker-like and NKX2-5+ cardiomyocytes; CD34 marks the pacemaker fraction (about 54% of NKX2-5-negative cardiomyocytes were CD34+ at day 25) and CD34 sorting enriches them",
+     "start_requirements": "hPSCs at about 80% confluence, dissociated to single cells with TrypLE. EBs in suspension on poly-HEMA-coated dishes at 5% O2 until day 11, then ambient oxygen.",
+     "stages": [
+      {
+       "name": "EB formation",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "Base medium (StemPro-34 with 2 mM L-glutamine, 50 µg/ml ascorbic acid, 75 µg/ml transferrin, 50 µg/ml monothioglycerol) used at 20% in IMDM, + 0.01x ITS-X",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "1 ng/ml",
+         "role": "Primes mesoderm"
+        },
+        {
+         "name": "Y-27632",
+         "conc": "10 µM",
+         "role": "ROCK inhibitor"
+        },
+        {
+         "name": "DNase I",
+         "conc": "250 U/ml",
+         "role": "Prevents clumping"
+        }
+       ],
+       "feeding": "18 h on an orbital shaker (80 rpm)",
+       "actions": [
+        "Suspend at 1 x 10^6 cells/ml in low-attachment 6 cm dishes",
+        "Culture at 5% O2"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Pacemaker mesoderm induction",
+       "day_start": 1,
+       "day_end": 3,
+       "base_medium": "Base medium, 100% StemPro-34",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "1 µM",
+         "role": "Wnt activation"
+        },
+        {
+         "name": "bFGF",
+         "conc": "2.5 ng/ml",
+         "role": "Mesoderm support"
+        },
+        {
+         "name": "BMP4",
+         "conc": "4 ng/ml",
+         "role": "Mesoderm inducer"
+        },
+        {
+         "name": "Activin A",
+         "conc": "3 ng/ml",
+         "role": "Mesoderm patterning"
+        }
+       ],
+       "feeding": "Single addition",
+       "actions": [
+        "Move EBs into induction medium on day 1"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Pacemaker specification",
+       "day_start": 3,
+       "day_end": 6,
+       "base_medium": "Base medium, 100% StemPro-34",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "0.5 µM",
+         "role": "Blocks Wnt secretion"
+        },
+        {
+         "name": "VEGF",
+         "conc": "10 ng/ml",
+         "role": "Support"
+        },
+        {
+         "name": "BMP4",
+         "conc": "2.5 ng/ml",
+         "role": "Promotes sinoatrial fate"
+        },
+        {
+         "name": "SB-431542",
+         "conc": "1.5 µM",
+         "role": "Activin/Nodal/TGF-beta receptor inhibitor"
+        },
+        {
+         "name": "Retinoic acid",
+         "conc": "0.125 µM",
+         "role": "Posterior (inflow) patterning"
+        },
+        {
+         "name": "PD173074",
+         "conc": "500-1000 nM, added on day 3 or day 4 depending on line",
+         "role": "FGF receptor inhibitor; suppresses NKX2-5+ working myocardium"
+        }
+       ],
+       "feeding": "Single addition on day 3 (PD173074 on day 3 for HES3-NKX2-5-eGFP, day 4 for HES2)",
+       "actions": [
+        "Wash EBs once with IMDM, then add specification medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Recovery",
+       "day_start": 6,
+       "day_end": 8,
+       "base_medium": "Base medium, 100% StemPro-34",
+       "factors": [
+        {
+         "name": "VEGF",
+         "conc": "5 ng/ml",
+         "role": "Support"
+        }
+       ],
+       "feeding": "Single change on day 6",
+       "actions": [
+        "Change medium on day 6"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Maintenance",
+       "day_start": 8,
+       "day_end": 25,
+       "base_medium": "Base medium, 20% StemPro-34 in IMDM",
+       "factors": [
+        {
+         "name": "VEGF",
+         "conc": "5 ng/ml (omit from day 11)",
+         "role": "Support"
+        }
+       ],
+       "feeding": "Change every 3-4 days",
+       "actions": [
+        "Move to ambient oxygen on day 11",
+        "Analyse or sort around day 25: SIRPA+ CD90- cardiomyocytes, NKX2-5-negative, CD34+"
+       ],
+       "checkpoint": "Fast, regularly beating EBs."
+      }
+     ],
+     "materials": [
+      "StemPro-34",
+      "IMDM",
+      "ITS-X",
+      "BMP4, Activin A, bFGF, VEGF",
+      "CHIR99021",
+      "IWP2",
+      "SB-431542",
+      "PD173074",
+      "Retinoic acid",
+      "Y-27632",
+      "DNase I",
+      "Poly-HEMA-coated dishes",
+      "Hypoxia incubator",
+      "Antibodies: SIRPA (CD172a), CD90, CD34"
+     ],
+     "tips": [
+      "Original protocol: Protze SI et al. 2017 Nat Biotechnol (PMID 27941801, doi 10.1038/nbt.3745).",
+      "An NKX2-5 reporter line makes it easy to follow the NKX2-5-negative pacemaker fraction; without one, sort SIRPA+ CD90- CD34+ cells.",
+      "PD173074 dose and day of addition are line-specific in the authors' hands."
+     ],
+     "pitfalls": [
+      "Unsorted cultures still contain NKX2-5+ atrial-like cardiomyocytes and non-myocytes; do not treat them as pure pacemaker cells.",
+      "Mesoderm induction doses (BMP4/Activin A) normally need titration for each line in this EB system."
+     ],
+     "unverified": [
+      "Values are those written in Lim et al. 2024 (same laboratory, 'previously reported protocols with modifications'); the Methods of Protze et al. 2017 could not be accessed, so the original 2017 concentrations are not confirmed here.",
+      "Overall percentage of pacemaker-like cells per culture was not captured as a single figure."
+     ]
+    },
+    {
+     "id": "wiesinger-2022-san-monolayer",
+     "cell_id": "pacemaker_cardiomyocyte",
+     "name": "Monolayer SAN protocol (BPEL; BMP4, retinoic acid, Wnt/TGF-beta/FGF inhibition on days 4-6)",
+     "type": "published",
+     "principle": "A growth-factor monolayer cardiac differentiation in BPEL in which, on days 4-6, cardiac mesoderm receives low BMP4 and retinoic acid while Wnt, ALK5 and FGF receptor signalling are inhibited, giving sinoatrial-like cardiomyocytes; XAV939 alone for 96 h gives the ventricular-like control.",
+     "source": {
+      "authors": "Wiesinger A, Li J, Fokkert L, et al.",
+      "year": 2022,
+      "journal": "eLife",
+      "title": "A single cell transcriptional roadmap of human pacemaker cell differentiation.",
+      "doi": "10.7554/eLife.76781",
+      "pmid": "36217819",
+      "url": "https://doi.org/10.7554/eLife.76781"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 19,
+     "efficiency": "60-90% TNNT2+ cells at day 19 (same range for the pacemaker and ventricular arms)",
+     "start_requirements": "hiPSCs in mTeSR1 on growth-factor-reduced Matrigel; seed at 2.5-3 x 10^4 cells/cm2 and start when 80-90% confluent.",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 3,
+       "base_medium": "BPEL",
+       "factors": [
+        {
+         "name": "Activin A",
+         "conc": "20 ng/ml",
+         "role": "Mesendoderm inducer"
+        },
+        {
+         "name": "BMP4",
+         "conc": "20 ng/ml",
+         "role": "Mesoderm inducer"
+        },
+        {
+         "name": "CHIR99021",
+         "conc": "1.5 µM",
+         "role": "Wnt activation"
+        }
+       ],
+       "feeding": "Single addition for 3 days",
+       "actions": [
+        "Replace mTeSR1 with BPEL plus factors at 80-90% confluence"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Wnt inhibition",
+       "day_start": 3,
+       "day_end": 4,
+       "base_medium": "BPEL",
+       "factors": [
+        {
+         "name": "XAV939",
+         "conc": "5 µM",
+         "role": "Tankyrase inhibitor; blocks canonical Wnt"
+        }
+       ],
+       "feeding": "Medium replaced on day 3",
+       "actions": [
+        "Replace with BPEL + XAV939"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Pacemaker specification",
+       "day_start": 4,
+       "day_end": 6,
+       "base_medium": "BPEL",
+       "factors": [
+        {
+         "name": "XAV939",
+         "conc": "5 µM",
+         "role": "Wnt inhibition (required to keep cells myocardial rather than proepicardial)"
+        },
+        {
+         "name": "BMP4",
+         "conc": "2.5 ng/ml",
+         "role": "Sinoatrial fate"
+        },
+        {
+         "name": "SB431542",
+         "conc": "5 µM",
+         "role": "ALK5 inhibitor"
+        },
+        {
+         "name": "Retinoic acid",
+         "conc": "250 nM",
+         "role": "Posterior patterning"
+        },
+        {
+         "name": "PD173074",
+         "conc": "250 nM",
+         "role": "FGF receptor inhibitor"
+        }
+       ],
+       "feeding": "48 h",
+       "actions": [
+        "Add the five-factor cocktail on day 4"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Maturation",
+       "day_start": 6,
+       "day_end": 19,
+       "base_medium": "BPEL",
+       "factors": [],
+       "feeding": "Refresh every 3 days",
+       "actions": [
+        "Replace with plain BPEL on day 6",
+        "Analyse at day 19"
+       ],
+       "checkpoint": "Contraction from about day 10; pacemaker wells beat visibly faster than ventricular control wells."
+      }
+     ],
+     "materials": [
+      "mTeSR1",
+      "Matrigel (growth-factor reduced)",
+      "BPEL medium",
+      "Activin A",
+      "BMP4",
+      "CHIR99021",
+      "XAV939",
+      "SB431542",
+      "Retinoic acid",
+      "PD173074"
+     ],
+     "tips": [
+      "Ventricular control: BPEL + 5 µM XAV939 from day 3 for 96 h, then BPEL.",
+      "Readouts used: SHOX2, TBX3, ISL1, HCN4 up and NKX2-5, MYL2 down versus the ventricular arm."
+     ],
+     "pitfalls": [
+      "Leaving out the Wnt inhibitor during days 4-6 collapses the cardiomyocyte fraction (about 10% TNNT2+) and gives proepicardial-like (WT1+, PDPN+) cells instead.",
+      "The culture is a mix of sinoatrial head, tail and transition-zone-like cells plus a proepicardial side population (about 10% PDPN+)."
+     ],
+     "unverified": []
+    },
+    {
+     "id": "ren-2019-wnt-reactivation",
+     "cell_id": "pacemaker_cardiomyocyte",
+     "name": "GiWi followed by a second Wnt pulse on days 5-7",
+     "type": "published",
+     "principle": "After a standard GiWi cardiac induction, canonical Wnt is switched back on (CHIR99021 or recombinant WNT5B) at the cardiac progenitor stage, which diverts progenitors toward pacemaker-like cardiomyocytes.",
+     "source": {
+      "authors": "Ren J, Han P, Ma X, et al.",
+      "year": 2019,
+      "journal": "Dev Cell",
+      "title": "Canonical Wnt5b Signaling Directs Outlying Nkx2.5+ Mesoderm into Pacemaker Cardiomyocytes.",
+      "doi": "10.1016/j.devcel.2019.07.014",
+      "pmid": "31402282",
+      "url": "https://doi.org/10.1016/j.devcel.2019.07.014"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 15,
+     "efficiency": null,
+     "start_requirements": "hESCs (TNNT2-GFP reporter H9 in the paper) in E8 on Geltrex, expanded to 80% confluence.",
+     "stages": [
+      {
+       "name": "Mesendoderm induction",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "12 µM",
+         "role": "Wnt activation"
+        }
+       ],
+       "feeding": "24 h",
+       "actions": [
+        "Start at 80% confluence"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Rest",
+       "day_start": 1,
+       "day_end": 3,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "48 h without factors",
+       "actions": [
+        "Remove CHIR after 24 h"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac specification",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "5 µM",
+         "role": "Blocks Wnt secretion"
+        }
+       ],
+       "feeding": "Added on day 3",
+       "actions": [
+        "Add IWP2 on day 3"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Pacemaker induction (Wnt back on)",
+       "day_start": 5,
+       "day_end": 7,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "3 µM",
+         "role": "Second, lower Wnt pulse"
+        },
+        {
+         "name": "WNT5B (alternative to CHIR)",
+         "conc": "1000 ng/ml",
+         "role": "Recombinant ligand used instead of CHIR"
+        }
+       ],
+       "feeding": "Added on day 5",
+       "actions": [
+        "Replace medium with CHIR99021 (or WNT5B); use DMSO for the control cardiomyocyte arm"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Maintenance",
+       "day_start": 7,
+       "day_end": 15,
+       "base_medium": "RPMI 1640 + B-27 (with insulin)",
+       "factors": [],
+       "feeding": "Not stated in the text read",
+       "actions": [
+        "Analyse or sort cardiomyocytes at day 15"
+       ],
+       "checkpoint": "Beating cultures."
+      }
+     ],
+     "materials": [
+      "E8 medium",
+      "Geltrex",
+      "RPMI 1640",
+      "B-27 minus insulin and B-27",
+      "CHIR99021",
+      "IWP2",
+      "Recombinant human WNT5B (optional)"
+     ],
+     "tips": [
+      "Simple add-on to an existing GiWi workflow; compare against a DMSO-treated arm from the same plate."
+     ],
+     "pitfalls": [
+      "The human experiments read here used a single TNNT2 reporter hESC line; confirm pacemaker identity (SHOX2, TBX3, HCN4 up; NKX2-5 down) and beating rate in your own line."
+     ],
+     "unverified": [
+      "Efficiency (fraction of pacemaker-like cells) was not captured.",
+      "Feeding interval after day 7 not captured."
+     ]
+    }
+   ],
+   "notes": "No protocol gives pure pacemaker cells: cultures contain atrial-like cardiomyocytes, transition-zone cells and proepicardial or other non-myocytes, so plan for a reporter line or surface-marker sorting. Dosing of BMP4, retinoic acid and the FGF inhibitor is line-dependent."
+  },
+  {
+   "id": "epicardial_cell",
+   "name": "Epicardial cells",
+   "aka": [
+    "hPSC-EPI",
+    "pro-epicardial cells",
+    "EpiCs"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "The mesothelial sheet covering the heart; in development it gives rise to cardiac fibroblasts and coronary smooth muscle and signals to the myocardium. hPSC-derived epicardium is used to study EMT, to make epicardium-derived fibroblasts and smooth muscle, and as a supportive cell type in engineered heart tissue.",
+   "route": [
+    "Pluripotent",
+    "Mesendoderm",
+    "Cardiac / lateral plate mesoderm",
+    "Pro-epicardium",
+    "Epicardial epithelium"
+   ],
+   "days_min": 12,
+   "days_max": 16,
+   "maturation_note": "WT1+ pro-epicardial cells by day 12-15; ALDH1A2 and tight junctions (ZO-1) appear a few days later.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "A flat cobblestone epithelium of polygonal cells with clear borders; cells turn spindle-shaped if TGF-beta signalling is not blocked during expansion.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "hPSCs",
+      "archetype": "psc_colony",
+      "look": "Confluent or near-confluent hPSC layer."
+     },
+     {
+      "day": 1,
+      "label": "Mesendoderm",
+      "archetype": "monolayer_dense",
+      "look": "Small, loosened, uniform cells after the first CHIR pulse."
+     },
+     {
+      "day": 6,
+      "label": "Cardiac progenitors",
+      "archetype": "monolayer_dense",
+      "look": "Dense sheet; cells are dissociated and replated sparsely at this point."
+     },
+     {
+      "day": 8,
+      "label": "Emerging epithelium",
+      "archetype": "cobblestone",
+      "look": "Islands of polygonal cells appear during the second Wnt pulse."
+     },
+     {
+      "day": 12,
+      "label": "Pro-epicardial sheet",
+      "archetype": "cobblestone",
+      "look": "Confluent cobblestone monolayer."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesendoderm",
+     "assays": [
+      "flow"
+     ],
+     "note": ">90% at 24 h in the Bao protocol."
+    },
+    {
+     "name": "NKX2-5",
+     "alias": "NKX2.5",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Cardiac progenitor",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "About half of day-6 cells."
+    },
+    {
+     "name": "ISL1",
+     "alias": "ISL1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Cardiac progenitor",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "About half of day-6 cells."
+    },
+    {
+     "name": "WT1",
+     "alias": "Wilms tumour 1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Pro-epicardium / epicardium",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Main purity readout; >90% expected."
+    },
+    {
+     "name": "TBX18",
+     "alias": "TBX18",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Pro-epicardium / epicardium",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Co-expressed with WT1."
+    },
+    {
+     "name": "TCF21",
+     "alias": "TCF21",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Epicardium",
+     "assays": [
+      "qPCR",
+      "ICC"
+     ],
+     "note": "Also marks fibroblast-fated cells."
+    },
+    {
+     "name": "ALDH1A2",
+     "alias": "RALDH2",
+     "kind": "protein",
+     "localization": "cytoplasmic",
+     "stage": "mature",
+     "stage_label": "Epicardium",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Retinoic-acid-synthesising epicardium; comes up after day 12."
+    },
+    {
+     "name": "TJP1",
+     "alias": "ZO-1",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "mature",
+     "stage_label": "Epicardial epithelium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Continuous junctional staining in a proper epithelium."
+    },
+    {
+     "name": "TNNT2",
+     "alias": "cardiac troponin T",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow"
+     ],
+     "note": "Should be under 1%."
+    },
+    {
+     "name": "ACTA2",
+     "alias": "alpha smooth muscle actin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "EMT / smooth muscle",
+     "assays": [
+      "ICC",
+      "flow"
+     ],
+     "note": "Rises if cells undergo spontaneous EMT."
+    }
+   ],
+   "functional_assays": [
+    "EMT in response to TGFB1 or bFGF",
+    "Differentiation into smooth muscle cells and fibroblasts",
+    "Retinoic acid synthesis (ALDH activity)"
+   ],
+   "qc": [
+    ">90% brachyury+ at 24 h and about 50% NKX2-5+/ISL1+ at day 6 (Bao 2017)",
+    ">90% WT1+ at day 12 (Bao 2017)",
+    "<1% cTnT+ cells (Bao 2017)"
+   ],
+   "protocols": [
+    {
+     "id": "bao-2017-giwi-chir",
+     "cell_id": "epicardial_cell",
+     "name": "GiWi cardiac progenitors, then a second CHIR99021 pulse (defined, xeno-free)",
+     "type": "published",
+     "principle": "Cardiac progenitors made by Wnt activation then inhibition are replated at low density on day 6 and given CHIR99021 again for two days; reactivating Wnt at this stage turns NKX2-5+/ISL1+ progenitors into WT1+ epicardial cells instead of cardiomyocytes. TGF-beta inhibition then allows long-term expansion.",
+     "source": {
+      "authors": "Bao X, Lian X, Qian T, et al.",
+      "year": 2017,
+      "journal": "Nat Protoc",
+      "title": "Directed differentiation and long-term maintenance of epicardial cells derived from human pluripotent stem cells under fully defined conditions.",
+      "doi": "10.1038/nprot.2017.080",
+      "pmid": "28817124",
+      "url": "https://doi.org/10.1038/nprot.2017.080"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 12,
+     "efficiency": ">90% WT1+ cells at day 12",
+     "start_requirements": "hPSCs (>95% OCT4+) in mTeSR1 or E8 on Matrigel or Synthemax. At day -3 plate 0.5-2.0 million singularised cells per well of a 12-well plate with ROCK inhibitor and feed daily. For E8-grown cells, pre-condition with 0.1-0.6 µM CHIR99021 on day -1.",
+     "stages": [
+      {
+       "name": "Mesendoderm induction",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "RPMI basal medium",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "6 µM (test 3-12 µM)",
+         "role": "Wnt activation"
+        }
+       ],
+       "feeding": "Exactly 24 h",
+       "actions": [
+        "Add 2 ml per 12-well and note the time",
+        "Change medium at 24 h"
+       ],
+       "checkpoint": ">90% brachyury+ at 24 h."
+      },
+      {
+       "name": "Rest",
+       "day_start": 1,
+       "day_end": 3,
+       "base_medium": "RPMI basal medium",
+       "factors": [],
+       "feeding": "One change on day 1",
+       "actions": [
+        "Replace with fresh basal medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac progenitor specification",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "RPMI basal medium (half conditioned, half fresh)",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "2.5 µM (test 2-8 µM)",
+         "role": "Blocks Wnt secretion"
+        }
+       ],
+       "feeding": "Single dose at 72 h",
+       "actions": [
+        "Mix 1 ml old medium with 1 ml fresh, add IWP2 and return to the well"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Progenitor rest",
+       "day_start": 5,
+       "day_end": 6,
+       "base_medium": "RPMI basal medium",
+       "factors": [],
+       "feeding": "One change on day 5",
+       "actions": [
+        "Replace with fresh basal medium"
+       ],
+       "checkpoint": "By day 6 about half the cells are NKX2-5+ and ISL1+ (flow); below 20% progenitors gives a poor epicardial yield."
+      },
+      {
+       "name": "Replating",
+       "day_start": 6,
+       "day_end": 7,
+       "base_medium": "LaSR basal (Advanced DMEM/F12 + 2.5 mM GlutaMAX + 100 µg/ml ascorbic acid) or RPMI/Vc/Ins (RPMI + 100 µg/ml ascorbic acid + 1 µg/ml insulin)",
+       "factors": [
+        {
+         "name": "Y-27632",
+         "conc": "5 µM",
+         "role": "ROCK inhibitor; attachment"
+        }
+       ],
+       "feeding": "Overnight without change",
+       "actions": [
+        "Dissociate with Accutase for 5 min",
+        "Seed on gelatin- or Synthemax-coated plates at 20,000-40,000 cells/cm2 in LaSR basal (or 40,000-80,000 cells/cm2 in RPMI/Vc/Ins)"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Epicardial induction (Wnt on again)",
+       "day_start": 7,
+       "day_end": 9,
+       "base_medium": "LaSR basal or RPMI/Vc/Ins",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "3 µM (test 1-6 µM)",
+         "role": "Wnt activation; epicardial fate"
+        }
+       ],
+       "feeding": "Fresh CHIR medium on day 7 and day 8",
+       "actions": [
+        "Feed 1 ml per 12-well with CHIR99021 on both days"
+       ],
+       "checkpoint": "Cobblestone morphology visible from day 8."
+      },
+      {
+       "name": "Pro-epicardial maturation",
+       "day_start": 9,
+       "day_end": 12,
+       "base_medium": "LaSR basal or RPMI/Vc/Ins",
+       "factors": [],
+       "feeding": "Daily change",
+       "actions": [
+        "Feed daily without factors on days 9, 10 and 11",
+        "Harvest, freeze or passage on day 12"
+       ],
+       "checkpoint": ">90% WT1+ at day 12; WT1 detectable from day 10. ALDH1A2 and ZO-1 come up by about day 16."
+      }
+     ],
+     "materials": [
+      "mTeSR1 or E8",
+      "Matrigel or Synthemax",
+      "Accutase, Versene",
+      "Y-27632",
+      "RPMI 1640",
+      "Advanced DMEM/F12",
+      "GlutaMAX",
+      "Ascorbic acid",
+      "Insulin",
+      "CHIR99021",
+      "IWP2",
+      "A83-01 or SB431542",
+      "Gelatin"
+     ],
+     "tips": [
+      "Day 5 or day 7 progenitors also work if CHIR99021 is given for the following 2 days.",
+      "For expansion, passage confluent cells 1:3 to 1:9 and keep them in LaSR basal or RPMI/Vc/Ins with 0.5 µM A83-01 or 2 µM SB431542; without a TGF-beta inhibitor they undergo EMT into smooth-muscle-like cells within 2-3 passages.",
+      "Use Accutase for the day-12 passage; Versene worked better for the authors after about 8 passages.",
+      "The same paper gives short add-on steps to turn the epicardial cells into fibroblasts and smooth muscle cells."
+     ],
+     "pitfalls": [
+      "Low WT1 at day 12 usually traces back to too few NKX2-5+/ISL1+ progenitors on day 6, wrong replating density, or a CHIR99021 dose that needs re-titrating.",
+      "If day-6 cells are left unreplated and untreated they become beating cardiomyocytes."
+     ],
+     "unverified": [
+      "Exact composition of the 'RPMI basal medium' used on days 0-6 (the albumin-free GiWi2 variant) was not captured from the text read; the original GiWi version uses RPMI/B27 minus insulin."
+     ]
+    },
+    {
+     "id": "witty-2014-bmp-wnt-eb",
+     "cell_id": "epicardial_cell",
+     "name": "EB mesoderm, then BMP4 + Wnt activation on days 4-6",
+     "type": "published",
+     "principle": "KDR+PDGFRA+ cardiovascular mesoderm is made in embryoid bodies, then plated as a monolayer; BMP4 together with active Wnt signalling (CHIR99021) specifies WT1+ pro-epicardium, whereas BMP4 with Wnt inhibition gives cardiomyocytes.",
+     "source": {
+      "authors": "Witty AD, Mihic A, Tam RY, et al.",
+      "year": 2014,
+      "journal": "Nat Biotechnol",
+      "title": "Generation of the epicardial lineage from human pluripotent stem cells.",
+      "doi": "10.1038/nbt.3002",
+      "pmid": "25240927",
+      "url": "https://doi.org/10.1038/nbt.3002"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "mixed",
+     "duration_days": 15,
+     "efficiency": "About 87% WT1+ at day 15 by immunostaining, rising to >90% eight days after passage",
+     "start_requirements": "hESCs maintained on irradiated MEFs and feeder-depleted on Matrigel for 2 days before dissociation into EBs.",
+     "stages": [
+      {
+       "name": "EB formation",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "StemPro-34",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "0.5 ng/ml",
+         "role": "Primes mesoderm"
+        }
+       ],
+       "feeding": "24 h",
+       "actions": [
+        "Dissociate hESCs and aggregate into EBs"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Mesoderm induction",
+       "day_start": 1,
+       "day_end": 4,
+       "base_medium": "StemPro-34",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "3 ng/ml",
+         "role": "Mesoderm inducer"
+        },
+        {
+         "name": "Activin A",
+         "conc": "2 ng/ml",
+         "role": "Mesoderm patterning"
+        },
+        {
+         "name": "bFGF",
+         "conc": "5 ng/ml",
+         "role": "Mesoderm support"
+        }
+       ],
+       "feeding": "Single addition",
+       "actions": [
+        "On day 4 (day 3 for the iPSC line used) dissociate EBs with TrypLE"
+       ],
+       "checkpoint": "KDR+PDGFRA+ mesoderm at day 4-5."
+      },
+      {
+       "name": "Pro-epicardial specification",
+       "day_start": 4,
+       "day_end": 6,
+       "base_medium": "StemPro-34",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "10 ng/ml",
+         "role": "Required for both epicardial and cardiomyocyte fates"
+        },
+        {
+         "name": "CHIR99021",
+         "conc": null,
+         "role": "Wnt activation; selects epicardial over cardiomyocyte fate"
+        }
+       ],
+       "feeding": "48 h",
+       "actions": [
+        "Plate the dissociated cells on gelatin-coated plates at 1 x 10^5 cells per well",
+        "Add BMP4 and CHIR99021"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Epicardial maturation",
+       "day_start": 6,
+       "day_end": 15,
+       "base_medium": "StemPro-34",
+       "factors": [
+        {
+         "name": "VEGF",
+         "conc": "5 ng/ml",
+         "role": "Support"
+        }
+       ],
+       "feeding": "Change every 2 days",
+       "actions": [
+        "Maintain to day 15",
+        "For passage, lift the sheet with collagenase B, dissociate with TrypLE and replate on Matrigel with ROCK inhibitor"
+       ],
+       "checkpoint": "Cobblestone WT1+ epithelium at day 15."
+      }
+     ],
+     "materials": [
+      "StemPro-34",
+      "BMP4, Activin A, bFGF, VEGF",
+      "CHIR99021",
+      "TrypLE",
+      "Gelatin-coated plates",
+      "Collagenase B",
+      "Matrigel",
+      "Y-27632"
+     ],
+     "tips": [
+      "EMT of the passaged epicardial cells was induced with TGFB1 and/or bFGF, giving smooth-muscle-like and fibroblast-like derivatives.",
+      "The matched cardiomyocyte condition is BMP4 plus a Wnt inhibitor (XAV939 or IWP2) in the same day 4-6 window."
+     ],
+     "pitfalls": [
+      "Adding bFGF during days 4-6 suppresses WT1; blocking BMP (dorsomorphin) gives neither epicardium nor cardiomyocytes.",
+      "Feeder-dependent hESC starting cultures; growth factor doses for mesoderm induction need titration for other lines."
+     ],
+     "unverified": [
+      "CHIR99021 concentration for days 4-6 is given in the figures, not in the text read; set to null.",
+      "Whether SB-431542 (5.4 µM) and VEGF (5 ng/ml), which are in the paper's default day 4-6 medium, are kept in the BMP4 + CHIR epicardial condition was not confirmed.",
+      "Well format for the 1 x 10^5 cells per well plating was not captured."
+     ]
+    },
+    {
+     "id": "iyer-2015-lm-wnt-bmp-ra",
+     "cell_id": "epicardial_cell",
+     "name": "Lateral plate mesoderm, then WNT3A + BMP4 + retinoic acid (chemically defined)",
+     "type": "published",
+     "principle": "hPSCs are taken through early mesoderm to lateral plate mesoderm with FGF2 and high BMP4, then plated sparsely in WNT3A, BMP4 and retinoic acid for 10 days to give an epicardial epithelium that can be pushed on to smooth muscle cells or fibroblasts.",
+     "source": {
+      "authors": "Iyer D, Gambardella L, Bernard WG, et al.",
+      "year": 2015,
+      "journal": "Development",
+      "title": "Robust derivation of epicardium and its differentiated smooth muscle cell progeny from human pluripotent stem cells.",
+      "doi": "10.1242/dev.119271",
+      "pmid": "25813541",
+      "url": "https://doi.org/10.1242/dev.119271"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 15,
+     "efficiency": null,
+     "start_requirements": "hPSCs on gelatin-coated plates in chemically defined medium (CDM-BSA) with Activin A (10 ng/ml) and FGF2 (12 ng/ml).",
+     "stages": [
+      {
+       "name": "Early mesoderm",
+       "day_start": 0,
+       "day_end": 1.5,
+       "base_medium": "CDM-PVA",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "20 ng/ml",
+         "role": "Mesoderm inducer"
+        },
+        {
+         "name": "LY294002",
+         "conc": "10 µM",
+         "role": "PI3K inhibitor; promotes exit from pluripotency"
+        },
+        {
+         "name": "BMP4",
+         "conc": "10 ng/ml",
+         "role": "Mesoderm inducer"
+        }
+       ],
+       "feeding": "36 h",
+       "actions": [
+        "Switch from maintenance medium to CDM-PVA with FGF2, LY294002 and BMP4"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Lateral plate mesoderm",
+       "day_start": 1.5,
+       "day_end": 5,
+       "base_medium": "CDM-PVA",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "20 ng/ml",
+         "role": "Mesoderm support"
+        },
+        {
+         "name": "BMP4",
+         "conc": "50 ng/ml",
+         "role": "High BMP specifies lateral plate"
+        }
+       ],
+       "feeding": "3.5 days",
+       "actions": [
+        "Change to FGF2 + high BMP4"
+       ],
+       "checkpoint": "Most cells ISL1+ (over 90%) and many NKX2-5+; over 60% KDR+."
+      },
+      {
+       "name": "Epicardial differentiation",
+       "day_start": 5,
+       "day_end": 15,
+       "base_medium": "CDM-PVA",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "50 ng/ml",
+         "role": "Epicardial induction"
+        },
+        {
+         "name": "WNT3A",
+         "conc": "25 ng/ml",
+         "role": "Wnt activation"
+        },
+        {
+         "name": "Retinoic acid",
+         "conc": "4 µM",
+         "role": "Epicardial induction"
+        }
+       ],
+       "feeding": "10 days",
+       "actions": [
+        "Replate lateral plate mesoderm at 2.5 x 10^3 cells/cm2 (as written in the paper)",
+        "Culture in WNT3A + BMP4 + retinoic acid"
+       ],
+       "checkpoint": "Cobblestone epithelium expressing WT1, TBX18 and TCF21."
+      }
+     ],
+     "materials": [
+      "CDM-PVA (IMDM/F12 1:1, PVA 1 mg/ml, lipids, transferrin, insulin, monothioglycerol)",
+      "FGF2",
+      "BMP4",
+      "LY294002",
+      "Recombinant WNT3A",
+      "Retinoic acid",
+      "Gelatin-coated plates",
+      "PDGF-BB and TGFB1 (for smooth muscle)"
+     ],
+     "tips": [
+      "Epicardium-derived smooth muscle: PDGF-BB 10 ng/ml + TGFB1 2 ng/ml in CDM-PVA for 12 days; fibroblast-like cells: VEGF 50 ng/ml + FGF2 50 ng/ml for 12 days.",
+      "Retinoic acid at 4 µM was chosen because 6 µM increased cell death after 3-4 days."
+     ],
+     "pitfalls": [
+      "The authors report that endogenous Wnt signalling is sufficient but not optimal for epicardial differentiation, which is why WNT3A is included.",
+      "The very low replating density is important for forming an epithelial sheet; check it against the paper before scaling."
+     ],
+     "unverified": [
+      "No single efficiency figure (% WT1+) was captured.",
+      "Medium-change interval during the 10-day epicardial step was not captured."
+     ]
+    }
+   ],
+   "notes": "Epicardial cells drift into mesenchyme (EMT) unless a TGF-beta receptor inhibitor is kept in the expansion medium. The three protocols start from different mesoderm (cardiac progenitors versus lateral plate) and use different inducers, so do not mix steps between them."
+  },
+  {
+   "id": "cardiac_fibroblast",
+   "name": "Cardiac fibroblasts",
+   "aka": [
+    "hiPSC-CF",
+    "hPSC-CF"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "The matrix-producing stromal cells of the heart, mostly of epicardial origin. hPSC-derived cardiac fibroblasts are used to model fibrosis and myofibroblast activation and as the stromal component of engineered heart tissue and cardiac microtissues.",
+   "route": [
+    "Pluripotent",
+    "Mesoderm",
+    "Cardiac progenitor",
+    "Epicardial or second-heart-field progenitor",
+    "Cardiac fibroblast"
+   ],
+   "days_min": 18,
+   "days_max": 20,
+   "maturation_note": "Fibroblast morphology by day 18-20; cells are expandable for several passages and activate to myofibroblasts with TGFB1 or serum.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "Elongated spindle-shaped cells growing in swirls and parallel bundles; activated myofibroblasts are larger and flatter with visible stress fibres.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "hPSCs",
+      "archetype": "psc_colony",
+      "look": "Confluent hPSC layer."
+     },
+     {
+      "day": 2,
+      "label": "Mesoderm",
+      "archetype": "monolayer_dense",
+      "look": "Small loosened cells after CHIR99021."
+     },
+     {
+      "day": 6,
+      "label": "Cardiac progenitors",
+      "archetype": "monolayer_dense",
+      "look": "Dense sheet, non-beating."
+     },
+     {
+      "day": 12,
+      "label": "Epicardial intermediate (epicardial route)",
+      "archetype": "cobblestone",
+      "look": "Cobblestone epithelium; skipped in the GiFGF route, where cells become mesenchymal directly."
+     },
+     {
+      "day": 20,
+      "label": "Cardiac fibroblasts",
+      "archetype": "spindle",
+      "look": "Spindle cells in aligned swirls."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "ISL1",
+     "alias": "ISL1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Cardiac / second heart field progenitor",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Persists through the GiFGF route."
+    },
+    {
+     "name": "WT1",
+     "alias": "WT1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Epicardial intermediate",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "High at day 12 in the epicardial route, then falls in fibroblasts."
+    },
+    {
+     "name": "TCF21",
+     "alias": "TCF21",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "flow",
+      "qPCR"
+     ],
+     "note": "Epicardium-derived fibroblast marker."
+    },
+    {
+     "name": "DDR2",
+     "alias": "DDR2",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Collagen receptor used as a fibroblast marker."
+    },
+    {
+     "name": "COL1A1",
+     "alias": "collagen I",
+     "kind": "protein",
+     "localization": "secreted",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Matrix production."
+    },
+    {
+     "name": "VIM",
+     "alias": "vimentin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "ICC"
+     ],
+     "note": "General mesenchymal marker."
+    },
+    {
+     "name": "POSTN",
+     "alias": "periostin",
+     "kind": "gene",
+     "localization": "secreted",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "qPCR",
+      "ICC"
+     ],
+     "note": "Fibroblast matrix protein; rises with activation."
+    },
+    {
+     "name": "GATA4",
+     "alias": "GATA4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Cardiac-specific transcription factor that separates cardiac from dermal fibroblasts."
+    },
+    {
+     "name": "TBX20",
+     "alias": "TBX20",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Cardiac fibroblast",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Cardiac identity marker retained in cardiac fibroblasts."
+    },
+    {
+     "name": "ACTA2",
+     "alias": "alpha smooth muscle actin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Myofibroblast",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Should be low in quiescent cells; rises with TGFB1."
+    },
+    {
+     "name": "TNNT2",
+     "alias": "cardiac troponin T",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Cardiomyocyte",
+     "assays": [
+      "flow"
+     ],
+     "note": "Should be absent."
+    },
+    {
+     "name": "PECAM1",
+     "alias": "CD31",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Endothelial",
+     "assays": [
+      "flow"
+     ],
+     "note": "Should be absent."
+    }
+   ],
+   "functional_assays": [
+    "TGFB1-induced myofibroblast activation (alpha-SMA, collagen)",
+    "Collagen gel contraction",
+    "Proliferation and migration (scratch) assays",
+    "Co-culture with hPSC-cardiomyocytes"
+   ],
+   "qc": [
+    ">90% COL1+, DDR2+ and TCF21+ by flow (Zhang H 2019)",
+    "80-90% TE-7+ at early passage (Zhang J 2019)",
+    "Low alpha-SMA in maintenance medium, inducible with TGFB1"
+   ],
+   "protocols": [
+    {
+     "id": "zhang-2019-gifgf",
+     "cell_id": "cardiac_fibroblast",
+     "name": "GiFGF: CHIR99021 then high-dose bFGF (second heart field route)",
+     "type": "published",
+     "principle": "After a one-day CHIR99021 pulse, cardiac mesoderm is switched on day 2 into a defined fibroblast medium with 75 ng/ml bFGF instead of a Wnt inhibitor; FGF signalling drives the progenitors through a second-heart-field-like state to cardiac fibroblasts and prevents cardiomyocyte formation.",
+     "source": {
+      "authors": "Zhang J, Tao R, Campbell KF, et al.",
+      "year": 2019,
+      "journal": "Nat Commun",
+      "title": "Functional cardiac fibroblasts derived from human pluripotent stem cells via second heart field progenitors.",
+      "doi": "10.1038/s41467-019-09831-5",
+      "pmid": "31110246",
+      "url": "https://doi.org/10.1038/s41467-019-09831-5"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 20,
+     "efficiency": "80-90% of cells positive for the fibroblast antigen TE-7 at early passage, rising to about 99% with further passaging",
+     "start_requirements": "hPSCs dissociated with Versene and seeded on Matrigel-coated 6-well plates at 1.5-2.0 x 10^6 cells per well in mTeSR1 + 10 µM Y-27632; fed daily for 5-6 days until 100% confluent.",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "12 µM",
+         "role": "Wnt activation"
+        }
+       ],
+       "feeding": "24 h",
+       "actions": [
+        "Add 2.5 ml per 6-well at 100% confluence"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Rest",
+       "day_start": 1,
+       "day_end": 2,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "24 h",
+       "actions": [
+        "Replace with 2.5 ml fresh medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Fibroblast specification and expansion",
+       "day_start": 2,
+       "day_end": 20,
+       "base_medium": "Cardiac fibroblast basal medium (CFBM, defined; formulation in the paper's supplementary table)",
+       "factors": [
+        {
+         "name": "bFGF",
+         "conc": "75 ng/ml",
+         "role": "Drives non-myocyte (fibroblast) fate"
+        }
+       ],
+       "feeding": "Every other day",
+       "actions": [
+        "Change to CFBM + bFGF after day 2 and before day 3",
+        "Feed every other day until day 20"
+       ],
+       "checkpoint": "No beating cells should appear; spindle cells take over the well."
+      }
+     ],
+     "materials": [
+      "mTeSR1",
+      "Matrigel (growth-factor reduced)",
+      "Versene",
+      "Y-27632",
+      "RPMI 1640",
+      "B-27 minus insulin",
+      "CHIR99021",
+      "bFGF",
+      "CFBM components (see paper)",
+      "FibroGRO medium + 2% FBS",
+      "0.05% trypsin-EDTA"
+     ],
+     "tips": [
+      "From day 20, passage with 0.05% trypsin-EDTA into uncoated plastic 6-well plates at 300,000 cells per well in FibroGRO + 2% FBS; feed every other day and split every 4-6 days (5,800 cells/cm2).",
+      "Starting bFGF on day 2 was the best window; day 3 or 4 with high bFGF caused extensive cell death after day 6."
+     ],
+     "pitfalls": [
+      "Cells activate into alpha-SMA-high myofibroblasts in serum-rich medium (DMEM + 10% FBS) or with TGFB1; keep them in the fibroblast medium for a quiescent phenotype.",
+      "TE-7 positivity declines again as the cells approach senescence at high passage."
+     ],
+     "unverified": [
+      "CFBM composition is in a supplementary table that was not read; obtain it from the paper before starting."
+     ]
+    },
+    {
+     "id": "zhang-2022-epicardial-route",
+     "cell_id": "cardiac_fibroblast",
+     "name": "Epicardial route: cardiac progenitors, epicardial cells, then FGF2 + SB431542",
+     "type": "published",
+     "principle": "Cardiac progenitors (CHIR99021 then IWR-1) are replated and converted to epicardial cells with CHIR99021 and retinoic acid, then differentiated into quiescent cardiac fibroblasts in fibroblast growth medium with FGF2 while TGF-beta signalling is blocked to prevent myofibroblast activation.",
+     "source": {
+      "authors": "Zhang H, Shen M, Wu JC",
+      "year": 2022,
+      "journal": "Methods Mol Biol",
+      "title": "Generation of Quiescent Cardiac Fibroblasts Derived from Human Induced Pluripotent Stem Cells.",
+      "doi": "10.1007/7651_2020_300",
+      "pmid": "32671814",
+      "url": "https://doi.org/10.1007/7651_2020_300"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 20,
+     "efficiency": ">90% of cells positive for COL1, DDR2 and TCF21 by flow at day 18 (original Circ Res report)",
+     "start_requirements": "hiPSCs in E8 on Matrigel-coated 6-well plates, 80-90% confluent on day 0.",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 2,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "6 µM (titrate 4-8 µM, 24-48 h)",
+         "role": "Wnt activation"
+        }
+       ],
+       "feeding": "Leave undisturbed for 2 days",
+       "actions": [
+        "Add 3 ml per 6-well"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Rest",
+       "day_start": 2,
+       "day_end": 3,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "One change",
+       "actions": [
+        "Replace medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac progenitor specification",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "IWR-1",
+         "conc": "5 µM",
+         "role": "Wnt inhibitor"
+        }
+       ],
+       "feeding": "48 h",
+       "actions": [
+        "Add IWR-1 medium on day 3"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Progenitor rest",
+       "day_start": 5,
+       "day_end": 6,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "One change on day 5",
+       "actions": [
+        "Replace medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Pro-epicardial induction",
+       "day_start": 6,
+       "day_end": 9,
+       "base_medium": "Advanced DMEM + GlutaMAX",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "5 µM",
+         "role": "Wnt activation; epicardial fate"
+        },
+        {
+         "name": "Retinoic acid",
+         "conc": "2 µM",
+         "role": "Epicardial induction"
+        },
+        {
+         "name": "Y-27632",
+         "conc": "5 µM (day 6 only)",
+         "role": "Attachment after replating"
+        },
+        {
+         "name": "FBS",
+         "conc": "1% (day 6 only)",
+         "role": "Attachment after replating"
+        }
+       ],
+       "feeding": "Replate on day 6; fresh CHIR + retinoic acid on day 7",
+       "actions": [
+        "Dissociate with Accutase and seed at 20,000 cells/cm2 (about 1:12)",
+        "On day 7 change to medium with CHIR99021 and retinoic acid only"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Epicardial expansion",
+       "day_start": 9,
+       "day_end": 14,
+       "base_medium": "Advanced DMEM + GlutaMAX",
+       "factors": [
+        {
+         "name": "SB431542",
+         "conc": "2 µM (from day 11)",
+         "role": "TGF-beta receptor inhibitor; prevents EMT"
+        }
+       ],
+       "feeding": "Plain medium on day 9; from day 12 every other day with SB431542",
+       "actions": [
+        "On day 11 passage 1:3 to 1:6 into medium with SB431542"
+       ],
+       "checkpoint": "Cobblestone epicardial sheet; >90% WT1+ expected at day 12."
+      },
+      {
+       "name": "Fibroblast differentiation",
+       "day_start": 14,
+       "day_end": 20,
+       "base_medium": "Fibroblast Growth Medium 3 (PromoCell)",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "20 ng/ml",
+         "role": "Fibroblast induction and growth"
+        },
+        {
+         "name": "SB431542",
+         "conc": "10 µM",
+         "role": "Keeps fibroblasts quiescent"
+        }
+       ],
+       "feeding": "Change on day 16; replate on day 18; then every other day",
+       "actions": [
+        "Day 14: seed epicardial cells on Matrigel at 10,000 cells/cm2 (about 1:3)",
+        "Day 18: passage again at 10,000 cells/cm2"
+       ],
+       "checkpoint": "Spindle-shaped fibroblasts by day 18."
+      }
+     ],
+     "materials": [
+      "E8",
+      "Matrigel",
+      "RPMI 1640",
+      "B-27 minus insulin",
+      "CHIR99021",
+      "IWR-1-endo",
+      "Advanced DMEM",
+      "GlutaMAX",
+      "Retinoic acid",
+      "Y-27632",
+      "FBS",
+      "SB431542",
+      "Fibroblast Growth Medium 3 (PromoCell)",
+      "FGF2",
+      "Accutase"
+     ],
+     "tips": [
+      "First described in Zhang H et al. 2019 Circ Res (PMID 31288631, doi 10.1161/CIRCRESAHA.119.315491); the step-by-step values here are from the same group's protocol chapter.",
+      "The first 6 days are the same as for cardiomyocytes; replating density on day 6 decides between epicardial cells (sparse) and beating cardiomyocytes (left in place).",
+      "With SB431542 in the medium most cells stay quiescent (about 5% alpha-SMA+) up to passage 5; remove the inhibitor at least a day before TGF-beta activation experiments."
+     ],
+     "pitfalls": [
+      "Massive death or detachment by day 2 means the CHIR99021 dose or duration needs titrating for that line.",
+      "Without the TGF-beta inhibitor the fibroblasts spontaneously become myofibroblasts in culture."
+     ],
+     "unverified": [
+      "The Circ Res paper's own Methods are in an online supplement that was not read; small differences from the chapter (the paper describes six days in fibroblast medium to day 18) are possible."
+     ]
+    }
+   ],
+   "notes": "Fibroblast markers are not specific on their own; confirm cardiac identity with GATA4/TBX20 and absence of cTnT and CD31. Cells activate easily on stiff plastic and in serum, so decide up front whether you need quiescent or activated cells and choose the maintenance medium accordingly."
+  },
+  {
+   "id": "endothelial_cell",
+   "name": "Endothelial cells",
+   "aka": [
+    "hiPSC-EC",
+    "hPSC-EC"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "The cells lining blood vessels. hPSC-derived endothelial cells are used for vascular disease modelling, barrier and inflammation assays, angiogenesis assays and to vascularise organoids and engineered tissues.",
+   "route": [
+    "Pluripotent",
+    "Mesoderm",
+    "Lateral / vascular mesoderm",
+    "Endothelial progenitor (CD34+)",
+    "Endothelial cell"
+   ],
+   "days_min": 5,
+   "days_max": 10,
+   "maturation_note": "CD144+/CD34+ cells by day 5-6; sorted cells mature and expand over a further 1-2 weeks but lose proliferative capacity with passage.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "After sorting, a cobblestone monolayer of polygonal cells that become elongated when sparse; unsorted day-6 cultures show endothelial islands among mesenchymal cells.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "Sparse hPSCs",
+      "archetype": "psc_colony",
+      "look": "Single cells and small clusters after single-cell plating."
+     },
+     {
+      "day": 2,
+      "label": "Mesoderm",
+      "archetype": "monolayer_dense",
+      "look": "Cells spread, flatten and proliferate into a loose sheet."
+     },
+     {
+      "day": 4,
+      "label": "Vascular mesoderm",
+      "archetype": "monolayer_dense",
+      "look": "Confluent, heterogeneous sheet with debris; medium acidifies."
+     },
+     {
+      "day": 6,
+      "label": "Endothelial islands",
+      "archetype": "cobblestone",
+      "look": "Patches of cobblestone cells among spindle-shaped mural cells."
+     },
+     {
+      "day": 10,
+      "label": "Purified endothelium",
+      "archetype": "cobblestone",
+      "look": "Uniform cobblestone monolayer after CD144 or CD34 selection."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "qPCR",
+      "flow"
+     ],
+     "note": "Early mesoderm."
+    },
+    {
+     "name": "KDR",
+     "alias": "VEGFR2",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Vascular mesoderm",
+     "assays": [
+      "flow"
+     ],
+     "note": "Vascular-competent mesoderm; stays on in endothelium."
+    },
+    {
+     "name": "CD34",
+     "alias": "CD34",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Endothelial progenitor",
+     "assays": [
+      "flow"
+     ],
+     "note": "Used for day-5 selection; lost with maturation in the Lian protocol."
+    },
+    {
+     "name": "CDH5",
+     "alias": "VE-cadherin, CD144",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "target",
+     "stage_label": "Endothelial cell",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Main purity and sorting marker."
+    },
+    {
+     "name": "PECAM1",
+     "alias": "CD31",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Endothelial cell",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Junctional staining."
+    },
+    {
+     "name": "VWF",
+     "alias": "von Willebrand factor",
+     "kind": "protein",
+     "localization": "cytoplasmic",
+     "stage": "mature",
+     "stage_label": "Endothelial cell",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Punctate Weibel-Palade body staining."
+    },
+    {
+     "name": "ENG",
+     "alias": "endoglin, CD105",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Endothelial cell",
+     "assays": [
+      "flow"
+     ],
+     "note": "Expressed on hPSC-ECs."
+    },
+    {
+     "name": "NOS3",
+     "alias": "eNOS",
+     "kind": "protein",
+     "localization": "cytoplasmic",
+     "stage": "mature",
+     "stage_label": "Endothelial cell",
+     "assays": [
+      "western",
+      "qPCR"
+     ],
+     "note": "Functional maturity marker."
+    },
+    {
+     "name": "PDGFRB",
+     "alias": "CD140b",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Mural cells",
+     "assays": [
+      "flow"
+     ],
+     "note": "Main contaminant before sorting."
+    },
+    {
+     "name": "PTPRC",
+     "alias": "CD45",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Haematopoietic",
+     "assays": [
+      "flow"
+     ],
+     "note": "Should be negative (as is CD43)."
+    }
+   ],
+   "functional_assays": [
+    "Tube formation on Matrigel",
+    "Acetylated LDL uptake",
+    "ICAM1 upregulation after TNF-alpha",
+    "Barrier function (TEER)",
+    "Sprouting / in vivo plug assays"
+   ],
+   "qc": [
+    "CD144+ 62-89% before sorting and about 96% after MACS (Patsch 2015)",
+    ">50% CD34+CD31+ at day 5 (Lian 2014)",
+    "CD43/CD45 negative"
+   ],
+   "protocols": [
+    {
+     "id": "patsch-2015-ec",
+     "cell_id": "endothelial_cell",
+     "name": "CHIR99021 + BMP4 mesoderm, then VEGF + forskolin (6 days)",
+     "type": "published",
+     "principle": "GSK3 inhibition plus BMP4 converts a sparse hPSC monolayer to lateral mesoderm in three days; a short exposure to high VEGF-A with forskolin (cAMP/PKA activation) then drives endothelial commitment, and CD144+ cells are purified magnetically on day 6.",
+     "source": {
+      "authors": "Patsch C, Challet-Meylan L, Thoma EC, et al.",
+      "year": 2015,
+      "journal": "Nat Cell Biol",
+      "title": "Generation of vascular endothelial and smooth muscle cells from human pluripotent stem cells.",
+      "doi": "10.1038/ncb3205",
+      "pmid": "26214132",
+      "url": "https://doi.org/10.1038/ncb3205"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 6,
+     "efficiency": "62-89% CD144+ cells before sorting; about 96% after CD144 MACS",
+     "start_requirements": "hPSCs in mTeSR1 on Matrigel, passaged with Accutase. Day 0: seed single cells at 37,000-47,000 cells/cm2 on growth-factor-reduced Matrigel in mTeSR1 + 10 µM Y-27632.",
+     "stages": [
+      {
+       "name": "Plating",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "mTeSR1",
+       "factors": [
+        {
+         "name": "Y-27632",
+         "conc": "10 µM",
+         "role": "ROCK inhibitor; single-cell survival"
+        }
+       ],
+       "feeding": "Overnight",
+       "actions": [
+        "Seed 37,000-47,000 cells/cm2",
+        "Optimise density per line"
+       ],
+       "checkpoint": "Evenly spread, sub-confluent cells on day 1."
+      },
+      {
+       "name": "Lateral mesoderm induction",
+       "day_start": 1,
+       "day_end": 4,
+       "base_medium": "N2B27 (DMEM/F12 : Neurobasal 1:1 with N2, B27 minus vitamin A and beta-mercaptoethanol)",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "6-8 µM (or CP21R7 1 µM)",
+         "role": "GSK3 inhibitor; Wnt activation"
+        },
+        {
+         "name": "BMP4",
+         "conc": "25 ng/ml",
+         "role": "Lateral mesoderm inducer"
+        }
+       ],
+       "feeding": "Three days with no medium change",
+       "actions": [
+        "Use a generous volume (3 ml per 12-well)",
+        "Do not change medium for 3 days"
+       ],
+       "checkpoint": "Medium turns light yellow by day 4; some floating dead cells are normal."
+      },
+      {
+       "name": "Endothelial induction",
+       "day_start": 4,
+       "day_end": 6,
+       "base_medium": "StemPro-34 SFM + GlutaMAX",
+       "factors": [
+        {
+         "name": "VEGF-A (VEGF165)",
+         "conc": "200 ng/ml",
+         "role": "Endothelial specification"
+        },
+        {
+         "name": "Forskolin",
+         "conc": "2 µM",
+         "role": "cAMP/PKA activation; boosts endothelial yield"
+        }
+       ],
+       "feeding": "Change every day",
+       "actions": [
+        "Feed 2 ml per 12-well daily",
+        "On day 6 dissociate with Accutase and isolate CD144+ cells with magnetic beads (or FACS)",
+        "Replate sorted cells on fibronectin in StemPro-34 + 50 ng/ml VEGF-A"
+       ],
+       "checkpoint": "Up to 80% CD144+ by flow on day 6."
+      }
+     ],
+     "materials": [
+      "mTeSR1",
+      "Matrigel (growth-factor reduced)",
+      "Accutase",
+      "Y-27632",
+      "DMEM/F12",
+      "Neurobasal",
+      "N2",
+      "B27 minus vitamin A",
+      "CHIR99021 or CP21R7",
+      "BMP4",
+      "StemPro-34 SFM",
+      "VEGF165",
+      "Forskolin",
+      "CD144 MicroBeads",
+      "Fibronectin"
+     ],
+     "tips": [
+      "Expansion: fibronectin-coated flasks (about 2 µg/cm2), StemPro-34 + 50 ng/ml VEGF-A.",
+      "The same day 1-4 mesoderm is the starting point for the smooth muscle protocol.",
+      "The paper's figure text describes the cells as CD31+, CD34+, KDR+, CD105+, vWF+ and negative for CD43/CD45."
+     ],
+     "pitfalls": [
+      "Confluency on day 1 is the main determinant of efficiency: too dense gives heavy death by day 4, too sparse a low yield.",
+      "Efficiency below 20% suggests inactive growth factors or wrong media; 20-50% usually means density or medium volume needs adjusting. Titrate density and GSK3 inhibitor dose per line.",
+      "A minor ACTA2+ mural population is always present before sorting."
+     ],
+     "unverified": [
+      "Step values are taken from the authors' own Protocol Exchange write-up (Challet Meylan L, Patsch C, Thoma E; doi 10.1038/protex.2015.055 for endothelial cells, doi 10.1038/protex.2015.056 for smooth muscle cells) because the online Methods of the Nat Cell Biol paper could not be accessed.",
+      "Duration of endothelial expansion after sorting is not specified."
+     ]
+    },
+    {
+     "id": "lian-2014-chir-lasr",
+     "cell_id": "endothelial_cell",
+     "name": "CHIR99021 alone in LaSR basal medium, CD34 sort on day 5",
+     "type": "published",
+     "principle": "Two days of Wnt activation in a minimal medium (Advanced DMEM/F12 with ascorbic acid) is enough to generate CD34+CD31+ endothelial progenitors without added VEGF or FGF; sorted progenitors mature into endothelial cells in EGM-2.",
+     "source": {
+      "authors": "Lian X, Bao X, Al-Ahmad A, et al.",
+      "year": 2014,
+      "journal": "Stem Cell Reports",
+      "title": "Efficient differentiation of human pluripotent stem cells to endothelial progenitors via small-molecule activation of WNT signaling.",
+      "doi": "10.1016/j.stemcr.2014.09.005",
+      "pmid": "25418725",
+      "url": "https://doi.org/10.1016/j.stemcr.2014.09.005"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 5,
+     "efficiency": "More than 50% CD34+CD31+ progenitors reported in multiple lines (about 25% in the initial medium screen); >99% CD31+/VE-cadherin+ after purification and expansion",
+     "start_requirements": "Singularised hPSCs seeded on Matrigel at 50,000 cells/cm2 in mTeSR1 + 5 µM Y-27632 on day -3; mTeSR1 changed daily until day 0.",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 2,
+       "base_medium": "LaSR basal medium (Advanced DMEM/F12 + 2.5 mM GlutaMAX + 60 µg/ml ascorbic acid)",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "6-10 µM",
+         "role": "GSK3 inhibitor; Wnt activation"
+        }
+       ],
+       "feeding": "2 days",
+       "actions": [
+        "Replace mTeSR1 with LaSR basal + CHIR99021"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Endothelial progenitor specification",
+       "day_start": 2,
+       "day_end": 5,
+       "base_medium": "LaSR basal medium",
+       "factors": [],
+       "feeding": "Maintained without CHIR for 3-4 days",
+       "actions": [
+        "Remove CHIR99021",
+        "On day 5 dissociate with Accutase (10 min) and purify CD34+ cells magnetically"
+       ],
+       "checkpoint": "CD34+CD31+ cells by flow on day 5."
+      },
+      {
+       "name": "Endothelial maturation",
+       "day_start": 5,
+       "day_end": 15,
+       "base_medium": "EGM-2",
+       "factors": [],
+       "feeding": "Split every 4-5 days with Accutase",
+       "actions": [
+        "Plate sorted CD34+ cells on collagen IV-coated dishes"
+       ],
+       "checkpoint": "By day 15 cells express CD31, CD144, vWF, ICAM1 and KDR and have lost CD34."
+      }
+     ],
+     "materials": [
+      "mTeSR1",
+      "Matrigel",
+      "Y-27632",
+      "Advanced DMEM/F12",
+      "GlutaMAX",
+      "Ascorbic acid",
+      "CHIR99021",
+      "CD34 magnetic selection kit",
+      "Collagen IV-coated dishes",
+      "EGM-2"
+     ],
+     "tips": [
+      "Seeding density strongly affects yield; the authors screened 12,000-300,000 cells/cm2.",
+      "Sorted cells went through about 20 population doublings over 2 months."
+     ],
+     "pitfalls": [
+      "Basal medium matters: RPMI/B27 and serum-containing endothelial medium gave no CD34+CD31+ cells in this scheme.",
+      "Endogenous MEK signalling is required; MEK inhibition abolishes the progenitors.",
+      "The CD34+ fraction is bipotent and also gives smooth muscle cells in other media."
+     ],
+     "unverified": []
+    }
+   ],
+   "notes": "Plan on a purification step (CD144, CD31 or CD34 beads or FACS); unsorted cultures are overgrown by mural cells. hPSC-ECs are generic or embryonic-like rather than organ-specific and stop proliferating after a few passages. Orlova et al. 2014 Nat Protoc (PMID 24874816) is another widely used protocol that yields endothelial cells and pericytes from the same culture, but its step values could not be checked here."
+  },
+  {
+   "id": "smooth_muscle_cell",
+   "name": "Vascular smooth muscle cells",
+   "aka": [
+    "hiPSC-VSMC",
+    "hPSC-SMC",
+    "mural cells"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Contractile cells of the vessel wall that set vascular tone and switch between contractile and synthetic states in disease. hPSC-derived smooth muscle cells are used to model aortopathies and atherosclerosis and to build vessel grafts and co-cultures with endothelium.",
+   "route": [
+    "Pluripotent",
+    "Mesoderm (or neuroectoderm)",
+    "Lateral plate / paraxial mesoderm or neural crest",
+    "Mural progenitor (PDGFRB+)",
+    "Smooth muscle cell"
+   ],
+   "days_min": 6,
+   "days_max": 17,
+   "maturation_note": "PDGFRB+ cells by day 6; contractile proteins (CNN1, TAGLN, MYH11) accumulate over 1-2 further weeks and depend on the maturation medium.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "Elongated spindle cells growing in a hill-and-valley pattern; contractile-biased cultures are larger, flatter and slow-growing with visible filament bundles.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "Sparse hPSCs",
+      "archetype": "psc_colony",
+      "look": "Single cells and small clusters after plating."
+     },
+     {
+      "day": 2,
+      "label": "Mesoderm",
+      "archetype": "monolayer_dense",
+      "look": "Flattened, proliferating loose sheet."
+     },
+     {
+      "day": 4,
+      "label": "Lateral mesoderm",
+      "archetype": "monolayer_dense",
+      "look": "Confluent heterogeneous sheet."
+     },
+     {
+      "day": 6,
+      "label": "Mural progenitors",
+      "archetype": "spindle",
+      "look": "Cells elongate and align after PDGF-BB."
+     },
+     {
+      "day": 12,
+      "label": "Smooth muscle cells",
+      "archetype": "spindle",
+      "look": "Aligned spindle cells in hills and valleys."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Early mesoderm."
+    },
+    {
+     "name": "KDR",
+     "alias": "VEGFR2",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Lateral plate mesoderm",
+     "assays": [
+      "flow",
+      "qPCR"
+     ],
+     "note": "Marks the lateral plate intermediate."
+    },
+    {
+     "name": "PDGFRB",
+     "alias": "CD140b",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Mural progenitor / smooth muscle",
+     "assays": [
+      "flow"
+     ],
+     "note": "Purity readout on day 6."
+    },
+    {
+     "name": "ACTA2",
+     "alias": "alpha smooth muscle actin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Smooth muscle cell",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Early marker; not specific on its own."
+    },
+    {
+     "name": "TAGLN",
+     "alias": "SM22-alpha",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Smooth muscle cell",
+     "assays": [
+      "ICC",
+      "western",
+      "qPCR"
+     ],
+     "note": "Early-to-intermediate marker."
+    },
+    {
+     "name": "CNN1",
+     "alias": "calponin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Smooth muscle cell",
+     "assays": [
+      "ICC",
+      "western"
+     ],
+     "note": "Intermediate contractile marker."
+    },
+    {
+     "name": "MYH11",
+     "alias": "smooth muscle myosin heavy chain",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "mature",
+     "stage_label": "Contractile smooth muscle",
+     "assays": [
+      "flow",
+      "ICC",
+      "western"
+     ],
+     "note": "Most specific and latest marker; >80% reported by Cheung 2012."
+    },
+    {
+     "name": "SMTN",
+     "alias": "smoothelin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "mature",
+     "stage_label": "Contractile smooth muscle",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Late contractile marker."
+    },
+    {
+     "name": "CDH5",
+     "alias": "VE-cadherin, CD144",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "off-target",
+     "stage_label": "Endothelial",
+     "assays": [
+      "flow"
+     ],
+     "note": "Should be virtually absent."
+    },
+    {
+     "name": "CSPG4",
+     "alias": "NG2",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Pericyte-like cells",
+     "assays": [
+      "flow"
+     ],
+     "note": "Small subpopulation (2-8%) in the Cheung protocol."
+    }
+   ],
+   "functional_assays": [
+    "Contraction to carbachol, angiotensin II or endothelin-1",
+    "Calcium flux after vasoconstrictors",
+    "Collagen gel contraction",
+    "Proliferation/migration response to PDGF-BB"
+   ],
+   "qc": [
+    "Almost all cells PDGFRB+ and CD144-negative on day 6 (Patsch 2015)",
+    ">80% MYH11+/ACTA2+ after 12 days of PDGF-BB + TGF-beta1 (Cheung 2012)"
+   ],
+   "protocols": [
+    {
+     "id": "patsch-2015-smc",
+     "cell_id": "smooth_muscle_cell",
+     "name": "CHIR99021 + BMP4 mesoderm, then PDGF-BB + Activin A (6 days)",
+     "type": "published",
+     "principle": "The same three-day CHIR99021 + BMP4 mesoderm used for endothelial cells is switched to PDGF-BB and Activin A, which gives almost exclusively PDGFRB+ mural cells; replating conditions then bias them to a synthetic or a contractile phenotype.",
+     "source": {
+      "authors": "Patsch C, Challet-Meylan L, Thoma EC, et al.",
+      "year": 2015,
+      "journal": "Nat Cell Biol",
+      "title": "Generation of vascular endothelial and smooth muscle cells from human pluripotent stem cells.",
+      "doi": "10.1038/ncb3205",
+      "pmid": "26214132",
+      "url": "https://doi.org/10.1038/ncb3205"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 10,
+     "efficiency": "Over 80% within six days (abstract); almost exclusively CD140b (PDGFRB)+ with virtually no CD144+ cells",
+     "start_requirements": "hPSCs in mTeSR1 on Matrigel. Day 0: seed single cells at 37,000-47,000 cells/cm2 on growth-factor-reduced Matrigel in mTeSR1 + 10 µM Y-27632.",
+     "stages": [
+      {
+       "name": "Plating",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "mTeSR1",
+       "factors": [
+        {
+         "name": "Y-27632",
+         "conc": "10 µM",
+         "role": "ROCK inhibitor"
+        }
+       ],
+       "feeding": "Overnight",
+       "actions": [
+        "Seed 37,000-47,000 cells/cm2"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Lateral mesoderm induction",
+       "day_start": 1,
+       "day_end": 4,
+       "base_medium": "N2B27",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "6-8 µM (or CP21R7 1 µM)",
+         "role": "GSK3 inhibitor; Wnt activation"
+        },
+        {
+         "name": "BMP4",
+         "conc": "25 ng/ml",
+         "role": "Lateral mesoderm inducer"
+        }
+       ],
+       "feeding": "Three days with no medium change",
+       "actions": [
+        "Use 3 ml per 12-well",
+        "Do not change medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Smooth muscle induction",
+       "day_start": 4,
+       "day_end": 6,
+       "base_medium": "N2B27",
+       "factors": [
+        {
+         "name": "PDGF-BB",
+         "conc": "10 ng/ml",
+         "role": "Mural cell specification"
+        },
+        {
+         "name": "Activin A",
+         "conc": "2 ng/ml",
+         "role": "Promotes smooth muscle differentiation"
+        }
+       ],
+       "feeding": "Change every day",
+       "actions": [
+        "Feed 2 ml per 12-well daily"
+       ],
+       "checkpoint": "PDGFRB+ spindle cells, CD144 negative."
+      },
+      {
+       "name": "Replating and phenotype choice",
+       "day_start": 6,
+       "day_end": 10,
+       "base_medium": "N2B27",
+       "factors": [
+        {
+         "name": "PDGF-BB (synthetic condition)",
+         "conc": "10 ng/ml",
+         "role": "Keeps cells proliferative/synthetic"
+        },
+        {
+         "name": "Activin A (contractile condition)",
+         "conc": "2 ng/ml",
+         "role": "Promotes contractile phenotype"
+        },
+        {
+         "name": "Heparin (contractile condition)",
+         "conc": "2 µg/ml",
+         "role": "Promotes contractile phenotype"
+        }
+       ],
+       "feeding": "At least 4 days",
+       "actions": [
+        "Seed 30,000 cells/cm2",
+        "Synthetic: gelatin-coated plates with PDGF-BB",
+        "Contractile: collagen-coated plates with Activin A + heparin"
+       ],
+       "checkpoint": "Elongated ACTA2+ cells; contractile wells proliferate little."
+      }
+     ],
+     "materials": [
+      "mTeSR1",
+      "Matrigel (growth-factor reduced)",
+      "Y-27632",
+      "N2B27 medium",
+      "CHIR99021 or CP21R7",
+      "BMP4",
+      "PDGF-BB",
+      "Activin A",
+      "Heparin",
+      "Gelatin",
+      "Collagen-coated plates"
+     ],
+     "tips": [
+      "Residual CD144+ cells can be removed by MACS if needed.",
+      "Serum and high PDGF-BB were deliberately avoided, so cells proliferate slowly, especially under the contractile condition."
+     ],
+     "pitfalls": [
+      "Pure populations of one phenotype are hard to maintain; with prolonged culture the synthetic phenotype dominates.",
+      "Density on day 1 controls efficiency, as for the endothelial arm."
+     ],
+     "unverified": [
+      "Step values are taken from the authors' own Protocol Exchange write-up (Challet Meylan L, Patsch C, Thoma E; doi 10.1038/protex.2015.055 for endothelial cells, doi 10.1038/protex.2015.056 for smooth muscle cells) because the online Methods of the Nat Cell Biol paper could not be accessed."
+     ]
+    },
+    {
+     "id": "cheung-2012-lineage-specific",
+     "cell_id": "smooth_muscle_cell",
+     "name": "Origin-specific smooth muscle via lateral plate mesoderm (PDGF-BB + TGF-beta1)",
+     "type": "published",
+     "principle": "hPSCs are first patterned into a defined embryonic intermediate (lateral plate mesoderm here; neuroectoderm or paraxial mesoderm in the alternative arms), then all intermediates are differentiated with PDGF-BB and TGF-beta1 for 12 days to give smooth muscle cells that retain origin-specific behaviour.",
+     "source": {
+      "authors": "Cheung C, Bernardo AS, Trotter MW, et al.",
+      "year": 2012,
+      "journal": "Nat Biotechnol",
+      "title": "Generation of human vascular smooth muscle subtypes provides insight into embryological origin-dependent disease susceptibility.",
+      "doi": "10.1038/nbt.2107",
+      "pmid": "22252507",
+      "url": "https://doi.org/10.1038/nbt.2107"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 17,
+     "efficiency": ">80% MYH11+/ACTA2+ cells after 12 days of PDGF-BB + TGF-beta1 from all three intermediates",
+     "start_requirements": "hPSCs maintained in chemically defined medium (CDM) with Activin A and FGF2.",
+     "stages": [
+      {
+       "name": "Early mesoderm",
+       "day_start": 0,
+       "day_end": 1.5,
+       "base_medium": "CDM",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "20 ng/ml",
+         "role": "Mesoderm inducer"
+        },
+        {
+         "name": "LY294002",
+         "conc": "10 µM",
+         "role": "PI3K inhibitor"
+        },
+        {
+         "name": "BMP4",
+         "conc": "10 ng/ml",
+         "role": "Mesoderm inducer"
+        }
+       ],
+       "feeding": "36 h",
+       "actions": [
+        "Change to CDM + FGF2 + LY294002 + BMP4"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Lateral plate mesoderm",
+       "day_start": 1.5,
+       "day_end": 5,
+       "base_medium": "CDM",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "20 ng/ml",
+         "role": "Mesoderm support"
+        },
+        {
+         "name": "BMP4",
+         "conc": "50 ng/ml",
+         "role": "High BMP specifies lateral plate (KDR+)"
+        }
+       ],
+       "feeding": "3.5 days",
+       "actions": [
+        "Change to FGF2 + high BMP4"
+       ],
+       "checkpoint": "KDR and other lateral plate markers up; paraxial markers off."
+      },
+      {
+       "name": "Smooth muscle differentiation",
+       "day_start": 5,
+       "day_end": 17,
+       "base_medium": "CDM",
+       "factors": [
+        {
+         "name": "PDGF-BB",
+         "conc": "10 ng/ml",
+         "role": "Mural specification"
+        },
+        {
+         "name": "TGF-beta1",
+         "conc": "2 ng/ml",
+         "role": "Smooth muscle maturation"
+        }
+       ],
+       "feeding": "At least 12 days",
+       "actions": [
+        "Trypsinise the intermediate population and replate in PDGF-BB + TGF-beta1",
+        "Withdraw growth factors for at least 24 h before assays"
+       ],
+       "checkpoint": "Early markers (ACTA2, TAGLN, CNN1) rise first; MYH11 peaks around days 9-12 of this step."
+      }
+     ],
+     "materials": [
+      "Chemically defined medium (CDM)",
+      "FGF2",
+      "LY294002",
+      "BMP4",
+      "PDGF-BB",
+      "TGF-beta1",
+      "SB431542 (neuroectoderm arm)",
+      "Trypsin"
+     ],
+     "tips": [
+      "Alternative origins: neuroectoderm with FGF2 12 ng/ml + SB431542 10 µM for 7 days; paraxial mesoderm with FGF2 20 ng/ml + LY294002 10 µM after the 36 h early-mesoderm step; both then get the same PDGF-BB + TGF-beta1 treatment.",
+      "A step-by-step version was published as Cheung et al. 2014 Nat Protoc (PMID 24675733, doi 10.1038/nprot.2014.059).",
+      "Choose the intermediate to match the embryonic origin of the vessel being modelled (for example neuroectoderm/neural crest for the ascending aorta and arch, paraxial mesoderm for the descending aorta)."
+     ],
+     "pitfalls": [
+      "A small fraction of cells (2-8%) express the pericyte marker CSPG4 (NG2) during differentiation.",
+      "The CDM system with Activin/FGF2 maintenance is different from mTeSR1/E8 culture; adaptation may be needed."
+     ],
+     "unverified": [
+      "Duration of the paraxial mesoderm step is not stated explicitly in the sentence read (it parallels the 3.5-day lateral plate step).",
+      "The 2014 Nat Protoc version could not be accessed, so any refinements there are not included."
+     ]
+    }
+   ],
+   "notes": "Smooth muscle identity is a spectrum: ACTA2 and TAGLN are also expressed by fibroblasts and pericytes, so include MYH11 and a contraction assay. Embryonic origin (lateral plate, paraxial mesoderm or neural crest) changes cell behaviour and should match the disease being modelled."
+  },
+  {
+   "id": "pericyte",
+   "name": "Pericytes / mural cells",
+   "aka": [
+    "hPSC-PC",
+    "brain pericyte-like cells",
+    "mural cells"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Mural cells wrapped around capillaries that stabilise the endothelium and regulate barrier function and blood flow. hPSC-derived pericyte-like cells are mainly used in blood-brain barrier and neurovascular models, vascular co-cultures and vascularised organoids.",
+   "route": [
+    "Pluripotent",
+    "Mesoderm or neural crest",
+    "Mesenchymal / mural progenitor",
+    "Pericyte-like cell"
+   ],
+   "days_min": 10,
+   "days_max": 25,
+   "maturation_note": "Marker-positive cells within 10 days by the mesoderm route and 22-25 days by the neural crest route; function is tested in endothelial co-culture.",
+   "difficulty": 2,
+   "culture_format": "2D monolayer",
+   "morphology": {
+    "endpoint": "Flat, irregular stellate-to-spindle cells with long processes, growing as a loose monolayer; in co-culture they line up along endothelial cords.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "hPSCs",
+      "archetype": "psc_colony",
+      "look": "Single-cell-plated hPSCs."
+     },
+     {
+      "day": 3,
+      "label": "Neural crest or mesoderm intermediate",
+      "archetype": "monolayer_dense",
+      "look": "Small, migratory cells at high density; passaged repeatedly in the neural crest route."
+     },
+     {
+      "day": 15,
+      "label": "Sorted progenitors",
+      "archetype": "spindle",
+      "look": "Sparse bipolar or stellate cells after replating."
+     },
+     {
+      "day": 22,
+      "label": "Pericyte-like cells",
+      "archetype": "spindle",
+      "look": "Larger, flattened spindle and stellate cells with fine processes."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "NGFR",
+     "alias": "p75-NGFR, CD271",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Neural crest",
+     "assays": [
+      "flow"
+     ],
+     "note": "Used to sort neural crest on day 15; also found on mesodermal mesenchyme."
+    },
+    {
+     "name": "B3GAT1",
+     "alias": "HNK-1, CD57",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Neural crest",
+     "assays": [
+      "flow"
+     ],
+     "note": "Neural crest route only; absent in the mesoderm route."
+    },
+    {
+     "name": "KDR",
+     "alias": "VEGFR2",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "flow"
+     ],
+     "note": "Mesoderm route intermediate."
+    },
+    {
+     "name": "PDGFRB",
+     "alias": "CD140b",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Pericyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Core mural marker."
+    },
+    {
+     "name": "CSPG4",
+     "alias": "NG2",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Pericyte",
+     "assays": [
+      "flow",
+      "ICC"
+     ],
+     "note": "Core pericyte marker; use together with PDGFRB."
+    },
+    {
+     "name": "ANPEP",
+     "alias": "CD13",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Pericyte",
+     "assays": [
+      "flow"
+     ],
+     "note": "Pericyte surface marker."
+    },
+    {
+     "name": "MCAM",
+     "alias": "CD146",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Pericyte",
+     "assays": [
+      "flow"
+     ],
+     "note": "Perivascular marker."
+    },
+    {
+     "name": "FOXF2",
+     "alias": "FOXF2",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "mature",
+     "stage_label": "Brain pericyte",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Brain mural identity."
+    },
+    {
+     "name": "ZIC1",
+     "alias": "ZIC1",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "mature",
+     "stage_label": "Brain pericyte",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "Brain mural identity."
+    },
+    {
+     "name": "ACTA2",
+     "alias": "alpha smooth muscle actin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Smooth muscle cell",
+     "assays": [
+      "ICC",
+      "flow"
+     ],
+     "note": "Should be low; high levels indicate smooth-muscle-like cells."
+    },
+    {
+     "name": "CD34",
+     "alias": "CD34",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Endothelial / haematopoietic",
+     "assays": [
+      "flow"
+     ],
+     "note": "Should be negative."
+    }
+   ],
+   "functional_assays": [
+    "Association with endothelial cords / tube stabilisation in co-culture",
+    "Increase in endothelial barrier (TEER) in blood-brain barrier co-culture",
+    "Contraction or calcium response to vasoactive agents"
+   ],
+   "qc": [
+    "PDGFRB+ and NG2+ with low alpha-SMA (Gastfriend 2021)",
+    "PDGFRB+, NG2+, CD13+, CD146+ and CD34-negative by flow (Faal 2019)",
+    "Self-assembly with endothelial cords in co-culture"
+   ],
+   "protocols": [
+    {
+     "id": "gastfriend-2021-neural-crest-pericyte",
+     "cell_id": "pericyte",
+     "name": "Brain pericyte-like cells via neural crest (E6-CSFD, then E6 + 10% FBS)",
+     "type": "published",
+     "principle": "Forebrain pericytes come from neural crest, so hPSCs are first converted to p75-NGFR+ HNK-1+ neural crest by Wnt activation with TGF-beta and BMP inhibition, sorted, and then pushed to NG2+ PDGFRB+ mural cells with serum.",
+     "source": {
+      "authors": "Gastfriend BD, Stebbins MJ, Du F, et al.",
+      "year": 2021,
+      "journal": "Curr Protoc",
+      "title": "Differentiation of Brain Pericyte-Like Cells from Human Pluripotent Stem Cell-Derived Neural Crest.",
+      "doi": "10.1002/cpz1.21",
+      "pmid": "33484491",
+      "url": "https://doi.org/10.1002/cpz1.21"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 22,
+     "efficiency": null,
+     "start_requirements": "hPSCs in E8 on Matrigel at about 70% confluence. Day -1: singularise with Accutase and seed 8.75 x 10^5 cells per well of a Matrigel-coated 6-well plate in E8 + 10 µM Y-27632.",
+     "stages": [
+      {
+       "name": "Neural crest induction and expansion",
+       "day_start": 0,
+       "day_end": 15,
+       "base_medium": "E6-CSFD (E6 medium with the five additives below)",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "1 µM",
+         "role": "Wnt activation"
+        },
+        {
+         "name": "SB431542",
+         "conc": "10 µM",
+         "role": "TGF-beta/Activin/Nodal inhibition"
+        },
+        {
+         "name": "FGF2",
+         "conc": "10 ng/ml",
+         "role": "Neural crest growth"
+        },
+        {
+         "name": "Dorsomorphin",
+         "conc": "1 µM",
+         "role": "BMP inhibition"
+        },
+        {
+         "name": "Heparin",
+         "conc": "22.5 µg/ml",
+         "role": "Stabilises FGF2"
+        }
+       ],
+       "feeding": "Daily, 2 ml per 6-well",
+       "actions": [
+        "Replace E8 with E6-CSFD on day 0",
+        "Each time cells reach 100% confluence (first at about day 1-3) passage 1:6 with Accutase onto Matrigel",
+        "Keep a backup well at the first passage in case reattachment is poor",
+        "On day 15 isolate p75-NGFR+ cells with neural crest magnetic beads"
+       ],
+       "checkpoint": "p75-NGFR+ HNK-1+ neural crest cells on day 15."
+      },
+      {
+       "name": "Replating of sorted neural crest",
+       "day_start": 15,
+       "day_end": 16,
+       "base_medium": "E6-CSFD",
+       "factors": [
+        {
+         "name": "Y-27632",
+         "conc": "10 µM",
+         "role": "Attachment"
+        }
+       ],
+       "feeding": "Overnight",
+       "actions": [
+        "Seed sorted cells on uncoated tissue-culture plastic"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Pericyte differentiation",
+       "day_start": 16,
+       "day_end": 22,
+       "base_medium": "E6 + 10% FBS",
+       "factors": [],
+       "feeding": "Regular changes; passage 1:2 when confluent",
+       "actions": [
+        "Switch to E6 + 10% FBS",
+        "Continue for 6-9 days depending on the downstream use (day 22-25)"
+       ],
+       "checkpoint": "NG2+ PDGFRB+ cells with low alpha-SMA."
+      }
+     ],
+     "materials": [
+      "E8 and E6 media",
+      "Matrigel",
+      "Accutase",
+      "Y-27632",
+      "CHIR99021",
+      "SB431542",
+      "FGF2",
+      "Dorsomorphin",
+      "Heparin",
+      "Neural Crest Stem Cell MicroBeads (anti-p75-NGFR) and MACS columns",
+      "FBS"
+     ],
+     "tips": [
+      "Original report: Stebbins MJ et al. 2019 Sci Adv (PMID 30891496, doi 10.1126/sciadv.aau7375).",
+      "Adding 10 µM Y-27632 at the first neural crest passage can rescue lines that reattach poorly.",
+      "Sorted neural crest can be expanded or frozen and differentiated later.",
+      "The cells express brain mural genes (ZIC1, FOXF2) and calponin/SM22-alpha but little alpha-SMA."
+     ],
+     "pitfalls": [
+      "Some death after the first neural crest passage is normal; poor reattachment is the usual failure point.",
+      "Markers that cleanly separate pericytes from smooth muscle cells and fibroblasts are still incomplete, so describe the product as 'pericyte-like'."
+     ],
+     "unverified": [
+      "Seeding density for the pericyte step is given in a table that was not captured.",
+      "The exact day of the switch from E6-CSFD + Y-27632 to E6 + 10% FBS after sorting is inferred as the day after plating.",
+      "No purity figure was captured from the text read."
+     ]
+    },
+    {
+     "id": "faal-2019-mesoderm-pericyte",
+     "cell_id": "pericyte",
+     "name": "Mesoderm route: 5 days mesoderm induction, 5 days pericyte medium",
+     "type": "published",
+     "principle": "hPSCs are converted to KDR+ mesoderm in a mesoderm induction medium for five days, then passaged into a commercial pericyte growth medium for five days; a parallel arm starts from CHIR99021-induced neural crest instead.",
+     "source": {
+      "authors": "Faal T, Phan DTT, Davtyan H, et al.",
+      "year": 2019,
+      "journal": "Stem Cell Reports",
+      "title": "Induction of Mesoderm and Neural Crest-Derived Pericytes from Human Pluripotent Stem Cells to Study Blood-Brain Barrier Interactions.",
+      "doi": "10.1016/j.stemcr.2019.01.005",
+      "pmid": "30745035",
+      "url": "https://doi.org/10.1016/j.stemcr.2019.01.005"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "2D monolayer",
+     "duration_days": 10,
+     "efficiency": "Surface PDGFRB, NG2, CD13 and CD146 at levels comparable to primary human brain vascular pericytes; CD34 negative",
+     "start_requirements": "hESCs or iPSCs under feeder-free conditions (details in the paper's supplement).",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 5,
+       "base_medium": "Mesodermal induction medium (MIM)",
+       "factors": [],
+       "feeding": "Not captured",
+       "actions": [
+        "Culture hPSCs in MIM for 5 days"
+       ],
+       "checkpoint": "KDR+ cells expressing MIXL1 and TBXT; HNK-1 negative."
+      },
+      {
+       "name": "Pericyte induction",
+       "day_start": 5,
+       "day_end": 10,
+       "base_medium": "Pericyte medium (proprietary commercial medium)",
+       "factors": [],
+       "feeding": "Not captured",
+       "actions": [
+        "Passage the mesoderm cells into pericyte medium",
+        "Maintain for 5 days, then expand"
+       ],
+       "checkpoint": "PDGFRB+, NG2+, CD13+, CD146+ cells; CD34 negative; low alpha-SMA."
+      }
+     ],
+     "materials": [
+      "Mesodermal induction medium",
+      "Pericyte medium",
+      "Antibodies: KDR, HNK-1, CD271, PDGFRB, NG2, CD13, CD146, CD34"
+     ],
+     "tips": [
+      "The neural crest arm of the same paper uses a CHIR99021-containing neural crest medium for 5 days before the same pericyte medium.",
+      "Both pericyte populations increased endothelial tube formation and barrier properties in co-culture."
+     ],
+     "pitfalls": [
+      "CD271 alone does not prove neural crest identity; it is also on mesoderm-derived mesenchymal progenitors.",
+      "The pericyte medium is proprietary, so the active factors are undefined."
+     ],
+     "unverified": [
+      "Supplier and composition of the mesodermal induction medium, coating, seeding densities and feeding schedule are in the supplement, which was not read."
+     ]
+    },
+    {
+     "id": "kumar-2017-mesenchymoangioblast",
+     "cell_id": "pericyte",
+     "name": "Clonal mesenchymoangioblast colonies, then PDGF-BB and pericyte medium",
+     "type": "published",
+     "principle": "Primitive posterior mesoderm is taken after two days of differentiation and grown in semisolid medium with FGF2, where mesenchymoangioblasts form compact colonies; colonies are then plated with PDGF-BB to make proliferative immature pericytes that can be matured into capillary-type or arteriolar-type pericytes.",
+     "source": {
+      "authors": "Kumar A, D'Souza SS, Moskvin OV, et al.",
+      "year": 2017,
+      "journal": "Cell Rep",
+      "title": "Specification and Diversification of Pericytes and Smooth Muscle Cells from Mesenchymoangioblasts.",
+      "doi": "10.1016/j.celrep.2017.05.019",
+      "pmid": "28564607",
+      "url": "https://doi.org/10.1016/j.celrep.2017.05.019"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "mixed",
+     "duration_days": 31,
+     "efficiency": null,
+     "start_requirements": "hPSCs differentiated for 2 days to mesoderm, either on OP9 stromal cells or in the authors' chemically defined conditions (BMP4, Activin A, FGF2).",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 2,
+       "base_medium": "OP9 co-culture or chemically defined medium",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": null,
+         "role": "Mesoderm induction (defined variant)"
+        },
+        {
+         "name": "Activin A",
+         "conc": null,
+         "role": "Mesoderm induction (defined variant)"
+        },
+        {
+         "name": "FGF2",
+         "conc": null,
+         "role": "Mesoderm induction (defined variant)"
+        }
+       ],
+       "feeding": "Not captured",
+       "actions": [
+        "Differentiate hPSCs for 2 days",
+        "Prepare a single-cell suspension on day 2"
+       ],
+       "checkpoint": "APLNR+ PDGFRA+ primitive posterior mesoderm."
+      },
+      {
+       "name": "Mesenchymoangioblast colony formation",
+       "day_start": 2,
+       "day_end": 14,
+       "base_medium": "Semisolid colony-forming serum-free medium (CF-SFM)",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "20 ng/ml",
+         "role": "Required for colony formation"
+        }
+       ],
+       "feeding": "No feeding (semisolid culture)",
+       "actions": [
+        "Plate 0.5-2 x 10^4 cells/ml",
+        "On day 12 of colony culture pick colonies, or dilute 1:5 in DMEM/F12 and collect colonies >100 µm on a 100 µm strainer"
+       ],
+       "checkpoint": "Compact spheroid colonies."
+      },
+      {
+       "name": "Pericyte specification",
+       "day_start": 14,
+       "day_end": 17,
+       "base_medium": "Mesenchymal serum-free expansion medium (M-SFEM)",
+       "factors": [
+        {
+         "name": "FGF2",
+         "conc": "10 ng/ml",
+         "role": "Mesenchymal growth"
+        },
+        {
+         "name": "PDGF-BB",
+         "conc": "50 ng/ml",
+         "role": "Pericyte specification"
+        }
+       ],
+       "feeding": "3 days",
+       "actions": [
+        "Plate colonies on dishes coated with fibronectin (3 µg/ml) and collagen I (10 µg/ml)"
+       ],
+       "checkpoint": "Colonies attach and spread."
+      },
+      {
+       "name": "Immature pericyte expansion",
+       "day_start": 17,
+       "day_end": 31,
+       "base_medium": "Pericyte Medium (ScienCell)",
+       "factors": [],
+       "feeding": "Until confluent (14 days), then passage every 3 days",
+       "actions": [
+        "Dissociate with Accutase and replate on fibronectin/collagen"
+       ],
+       "checkpoint": "Confluent monolayer of proliferative NG2+ PDGFRB+ CD13+ CD146+ cells."
+      },
+      {
+       "name": "Optional maturation",
+       "day_start": 31,
+       "day_end": 37,
+       "base_medium": "Pericyte Medium (ScienCell)",
+       "factors": [
+        {
+         "name": "SB431542",
+         "conc": "10 µM",
+         "role": "TGF-beta inhibition"
+        },
+        {
+         "name": "PDGF-BB",
+         "conc": "50 ng/ml (capillary-type PC1) or 10 ng/ml (arteriolar-type PC2)",
+         "role": "Pericyte maturation"
+        },
+        {
+         "name": "VEGF (PC2 only)",
+         "conc": "10 ng/ml",
+         "role": "Arteriolar-type maturation"
+        },
+        {
+         "name": "EGF2 as written in the paper (PC2 only)",
+         "conc": "2 ng/ml",
+         "role": "Arteriolar-type maturation"
+        }
+       ],
+       "feeding": "6 days",
+       "actions": [
+        "Then split 1:5 and culture 4 more days in Pericyte Medium"
+       ],
+       "checkpoint": null
+      }
+     ],
+     "materials": [
+      "OP9 cells or defined mesoderm medium",
+      "CF-SFM semisolid medium",
+      "FGF2",
+      "M-SFEM",
+      "PDGF-BB",
+      "Fibronectin",
+      "Collagen I",
+      "Pericyte Medium (ScienCell)",
+      "Accutase",
+      "SB431542",
+      "VEGF"
+     ],
+     "tips": [
+      "The same colonies give smooth muscle cells if plated in EGM-2 with sphingosylphosphorylcholine (2 µM) and TGF-beta3 (2 ng/ml) for 6 days.",
+      "Immature pericytes could be cultured for up to 12 passages, with senescence appearing from passages 8-12."
+     ],
+     "pitfalls": [
+      "Long and technically specialised (semisolid clonogenic culture, colony picking); choose it when clonal origin or pericyte subtype matters.",
+      "CF-SFM and M-SFEM are in-house formulations defined in earlier papers from the same laboratory."
+     ],
+     "unverified": [
+      "Concentrations and medium for the 2-day mesoderm induction were not captured (given by reference to earlier papers).",
+      "The paper lists 'EGF2 (2 ng/mL)' in the PC2 maturation mix; whether this means EGF or FGF2 could not be resolved.",
+      "No yield or purity figure captured."
+     ]
+    }
+   ],
+   "notes": "There is no single definitive pericyte marker, and published 'pericytes' differ by route (neural crest versus mesoderm) and medium, so state the route and show a marker panel plus an endothelial co-culture assay. Orlova et al. 2014 Nat Protoc (PMID 24874816) derives pericytes from the CD31-negative fraction of an endothelial differentiation; its step values could not be checked here."
+  },
+  {
+   "id": "blood_vessel_organoid",
+   "name": "Blood vessel organoids",
+   "aka": [
+    "BVO",
+    "vascular organoids",
+    "hBVO"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Self-organising 3D capillary networks of endothelial cells and pericytes wrapped in a basement membrane. They are used to model diabetic vasculopathy and other microvascular disease, to study vessel-wall biology, and as a source of human vessels for transplantation or for vascularising other organoids.",
+   "route": [
+    "Pluripotent",
+    "Aggregate",
+    "Mesoderm",
+    "Vascular progenitors",
+    "Sprouting network in gel",
+    "Blood vessel organoid"
+   ],
+   "days_min": 15,
+   "days_max": 18,
+   "maturation_note": "Networks form about 5 days after embedding; extracted organoids can be kept for up to 3 months and mature further after transplantation.",
+   "difficulty": 3,
+   "culture_format": "organoid",
+   "morphology": {
+    "endpoint": "Before extraction, a dense core with fine branching sprouts radiating into the gel; after extraction, a translucent sphere that needs CD31/PDGFRB/collagen IV whole-mount staining to show the network.",
+    "stages": [
+     {
+      "day": 0,
+      "label": "Aggregates",
+      "archetype": "spheres",
+      "look": "Small round aggregates forming in suspension."
+     },
+     {
+      "day": 5,
+      "label": "Mesoderm aggregates",
+      "archetype": "spheres",
+      "look": "Aggregates enlarge and become rougher and darker."
+     },
+     {
+      "day": 13,
+      "label": "Embedded in gel",
+      "archetype": "spheres",
+      "look": "Aggregates sit in the collagen I-Matrigel gel; first sprouts appear within days."
+     },
+     {
+      "day": 18,
+      "label": "Sprouting vascular network",
+      "archetype": "organoid_budding",
+      "look": "Branching tube-like sprouts extend radially from the core."
+     },
+     {
+      "day": 25,
+      "label": "Free-floating organoid",
+      "archetype": "spheres",
+      "look": "Extracted networks compact into smooth spheres."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "qPCR"
+     ],
+     "note": "After the CHIR99021 pulse."
+    },
+    {
+     "name": "KDR",
+     "alias": "VEGFR2",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "intermediate",
+     "stage_label": "Vascular progenitor",
+     "assays": [
+      "flow",
+      "qPCR"
+     ],
+     "note": "Vascular-competent mesoderm."
+    },
+    {
+     "name": "PECAM1",
+     "alias": "CD31",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Endothelial network",
+     "assays": [
+      "ICC",
+      "flow"
+     ],
+     "note": "Whole-mount staining shows the capillary network."
+    },
+    {
+     "name": "CDH5",
+     "alias": "VE-cadherin, CD144",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "target",
+     "stage_label": "Endothelial network",
+     "assays": [
+      "ICC",
+      "flow"
+     ],
+     "note": "Endothelial junctions."
+    },
+    {
+     "name": "PDGFRB",
+     "alias": "CD140b",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Pericytes",
+     "assays": [
+      "ICC",
+      "flow"
+     ],
+     "note": "Pericytes covering the endothelial tubes."
+    },
+    {
+     "name": "COL4A1",
+     "alias": "collagen IV",
+     "kind": "protein",
+     "localization": "secreted",
+     "stage": "mature",
+     "stage_label": "Basement membrane",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Continuous sheath around vessels; thickens under diabetic conditions."
+    },
+    {
+     "name": "ACTA2",
+     "alias": "alpha smooth muscle actin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "mature",
+     "stage_label": "Mural cells",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Mural coverage, especially after transplantation."
+    },
+    {
+     "name": "VWF",
+     "alias": "von Willebrand factor",
+     "kind": "protein",
+     "localization": "cytoplasmic",
+     "stage": "mature",
+     "stage_label": "Endothelium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Endothelial maturity."
+    },
+    {
+     "name": "PTPRC",
+     "alias": "CD45",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "off-target",
+     "stage_label": "Haematopoietic",
+     "assays": [
+      "flow"
+     ],
+     "note": "Check if haematopoietic contamination matters for your assay."
+    }
+   ],
+   "functional_assays": [
+    "Whole-mount imaging of CD31+ network with PDGFRB+ pericyte coverage and collagen IV sheath",
+    "Basement membrane thickening under high glucose + cytokines",
+    "Perfusion after transplantation into immunodeficient mice"
+   ],
+   "qc": [
+    "Sprouting visible within days of embedding and networks established around day 18 (Wimmer 2019)",
+    "CD31+ tubes covered by PDGFRB+ pericytes and a collagen IV basement membrane"
+   ],
+   "protocols": [
+    {
+     "id": "wimmer-2019-bvo",
+     "cell_id": "blood_vessel_organoid",
+     "name": "Mesoderm aggregates embedded in collagen I-Matrigel with VEGF-A and FGF-2",
+     "type": "published",
+     "principle": "hPSC aggregates are driven to mesoderm with CHIR99021 and to vascular lineages with BMP4, VEGF-A and FGF-2; embedding in a collagen I-Matrigel gel with high VEGF-A and FGF-2 lets endothelial cells sprout into capillary networks covered by pericytes and basement membrane, which are then cut out and kept as free-floating organoids.",
+     "source": {
+      "authors": "Wimmer RA, Leopoldi A, Aichinger M, et al.",
+      "year": 2019,
+      "journal": "Nature",
+      "title": "Human blood vessel organoids as a model of diabetic vasculopathy.",
+      "doi": "10.1038/s41586-018-0858-8",
+      "pmid": "30651639",
+      "url": "https://doi.org/10.1038/s41586-018-0858-8"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "organoid",
+     "duration_days": 18,
+     "efficiency": null,
+     "start_requirements": "hPSCs dissociated to single cells (brief EDTA then Accutase); 2 x 10^5 cells per well of an ultra-low-attachment 6-well plate.",
+     "stages": [
+      {
+       "name": "Aggregation",
+       "day_start": 0,
+       "day_end": 3,
+       "base_medium": "Differentiation medium (DMEM/F12 + 20% KnockOut Serum Replacement + GlutaMAX + NEAA)",
+       "factors": [
+        {
+         "name": "Y-27632",
+         "conc": "50 µM",
+         "role": "ROCK inhibitor; aggregate survival"
+        }
+       ],
+       "feeding": "Not captured",
+       "actions": [
+        "Plate 2 x 10^5 cells per ultra-low-attachment well"
+       ],
+       "checkpoint": "Small round aggregates."
+      },
+      {
+       "name": "Mesoderm induction",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "Differentiation medium",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "12 µM",
+         "role": "Wnt activation; mesoderm"
+        }
+       ],
+       "feeding": "Added on day 3",
+       "actions": [
+        "Add CHIR99021 to the aggregates"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Vascular specification",
+       "day_start": 5,
+       "day_end": 11,
+       "base_medium": "Differentiation medium",
+       "factors": [
+        {
+         "name": "BMP4",
+         "conc": "30 ng/ml",
+         "role": "Vascular mesoderm"
+        },
+        {
+         "name": "VEGF-A",
+         "conc": "30 ng/ml",
+         "role": "Endothelial induction"
+        },
+        {
+         "name": "FGF-2",
+         "conc": "30 ng/ml",
+         "role": "Vascular growth"
+        }
+       ],
+       "feeding": "Added on days 5, 7 and 9",
+       "actions": [
+        "Refresh factors every second day"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Endothelial enrichment",
+       "day_start": 11,
+       "day_end": 13,
+       "base_medium": "Differentiation medium",
+       "factors": [
+        {
+         "name": "VEGF-A",
+         "conc": "30 ng/ml",
+         "role": "Endothelial growth"
+        },
+        {
+         "name": "FGF-2",
+         "conc": "30 ng/ml",
+         "role": "Vascular growth"
+        },
+        {
+         "name": "SB431542",
+         "conc": "10 µM",
+         "role": "Raises endothelial yield and limits excess pericyte differentiation"
+        }
+       ],
+       "feeding": "Single change on day 11",
+       "actions": [
+        "Switch to VEGF-A + FGF-2 + SB431542"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Sprouting in 3D gel",
+       "day_start": 13,
+       "day_end": 18,
+       "base_medium": "Differentiation medium over a Matrigel:collagen I (1:1) gel",
+       "factors": [
+        {
+         "name": "VEGF-A",
+         "conc": "100 ng/ml",
+         "role": "Sprouting angiogenesis"
+        },
+        {
+         "name": "FGF-2",
+         "conc": "100 ng/ml",
+         "role": "Sprouting angiogenesis"
+        }
+       ],
+       "feeding": "Every 2-3 days",
+       "actions": [
+        "Embed aggregates in the gel on day 13 and overlay with medium"
+       ],
+       "checkpoint": "Vessel sprouts radiate from each aggregate; networks established around day 18."
+      },
+      {
+       "name": "Free-floating organoids",
+       "day_start": 18,
+       "day_end": 30,
+       "base_medium": "Differentiation medium with VEGF-A and FGF-2",
+       "factors": [
+        {
+         "name": "VEGF-A",
+         "conc": "100 ng/ml",
+         "role": "Maintenance"
+        },
+        {
+         "name": "FGF-2",
+         "conc": "100 ng/ml",
+         "role": "Maintenance"
+        }
+       ],
+       "feeding": "Every 2-3 days",
+       "actions": [
+        "Cut individual networks out of the gel",
+        "Transfer one per well to 96-well ultra-low-attachment U-bottom plates"
+       ],
+       "checkpoint": "Networks round up into spherical organoids; culturable for up to 3 months."
+      }
+     ],
+     "materials": [
+      "Ultra-low-attachment 6-well and 96-well U-bottom plates",
+      "DMEM/F12",
+      "KnockOut Serum Replacement",
+      "GlutaMAX",
+      "NEAA",
+      "Y-27632",
+      "CHIR99021",
+      "BMP4",
+      "VEGF-A",
+      "FGF-2",
+      "SB431542",
+      "Matrigel",
+      "Collagen I"
+     ],
+     "tips": [
+      "A stepwise, optimised version by the same authors is Wimmer et al. 2019 Nat Protoc (PMID 31554955, doi 10.1038/s41596-019-0213-z); read it before starting, since it differs in detail from this first description.",
+      "For the diabetic vasculopathy model the authors exposed organoids to high glucose plus inflammatory cytokines and scored collagen IV basement-membrane thickening.",
+      "Organoids transplanted under the mouse kidney capsule became perfused and formed arteries, arterioles and venules."
+     ],
+     "pitfalls": [
+      "Matrigel and collagen lots vary and the gel must be kept cold and mixed quickly; sprouting quality depends on it.",
+      "The first description starts from a bulk suspension of aggregates in a 6-well plate, so aggregate size is not tightly controlled."
+     ],
+     "unverified": [
+      "Values are from the Nature 2019 Methods; the Nat Protoc version could not be accessed, so its (reportedly shorter and more defined) schedule is not given.",
+      "Feeding details for days 0-3 and the medium/factor concentrations after extraction (assumed unchanged from the gel stage) were not stated explicitly in the text read.",
+      "The end day of the final stage (30) is nominal; the paper states only that organoids can be kept for up to 3 months.",
+      "No efficiency figure (endothelial/pericyte percentages) was captured."
+     ]
+    }
+   ],
+   "notes": "A technically demanding 3D protocol: outcome depends on aggregate size, the collagen/Matrigel gel and growth-factor quality. Only the original Nature description could be verified here; follow the authors' Nat Protoc paper for the current step-by-step version."
+  },
+  {
+   "id": "cardiac_organoid",
+   "name": "Cardiac organoids / cardioids",
+   "aka": [
+    "heart organoids",
+    "hHO",
+    "heart-forming organoids",
+    "HFO",
+    "cardioids"
+   ],
+   "start": "human_psc",
+   "lineage": "mesoderm",
+   "group": "Heart and vessels",
+   "summary": "Self-organising 3D heart-like structures containing cardiomyocytes together with epicardial, endocardial/endothelial and stromal cells, often with internal chambers or cavities. They are used to study early human heart development, congenital heart defects, maternal-diabetes and drug effects, and injury responses.",
+   "route": [
+    "Pluripotent",
+    "3D aggregate",
+    "Mesoderm",
+    "Cardiac mesoderm",
+    "Beating organoid with chambers"
+   ],
+   "days_min": 10,
+   "days_max": 15,
+   "maturation_note": "Beating from about day 6-7; chambers and multi-lineage organisation by day 10-15; cultures have been kept beating for at least 8 weeks.",
+   "difficulty": 3,
+   "culture_format": "organoid",
+   "morphology": {
+    "endpoint": "A single beating spheroid per well, with darker dense myocardium and paler cavities or an outer translucent layer; Matrigel-embedded versions show concentric layers.",
+    "stages": [
+     {
+      "day": -2,
+      "label": "Aggregate formation",
+      "archetype": "spheres",
+      "look": "One compact, smooth-edged hPSC aggregate at the bottom of each U-well."
+     },
+     {
+      "day": 1,
+      "label": "Mesoderm aggregate",
+      "archetype": "spheres",
+      "look": "Aggregate swells and the edge becomes less sharp after CHIR99021."
+     },
+     {
+      "day": 4,
+      "label": "Cardiac mesoderm",
+      "archetype": "spheres",
+      "look": "Larger, darker spheroid; cavities start to appear."
+     },
+     {
+      "day": 7,
+      "label": "Beating organoid",
+      "archetype": "cardiomyocytes",
+      "look": "Rhythmic contraction of part or all of the spheroid."
+     },
+     {
+      "day": 15,
+      "label": "Chambered organoid",
+      "archetype": "spheres",
+      "look": "Beating spheroid with internal lumens and an outer epicardial layer."
+     }
+    ]
+   },
+   "markers": [
+    {
+     "name": "POU5F1",
+     "alias": "OCT4",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "flow",
+      "ICC",
+      "qPCR"
+     ],
+     "note": "High at day 0; should be lost within the first days of differentiation."
+    },
+    {
+     "name": "NANOG",
+     "alias": "NANOG",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "pluripotent",
+     "stage_label": "Pluripotent",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Second pluripotency check; should be absent in the finished culture."
+    },
+    {
+     "name": "TBXT",
+     "alias": "brachyury",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "Mesoderm",
+     "assays": [
+      "qPCR",
+      "ICC"
+     ],
+     "note": "Day 1."
+    },
+    {
+     "name": "HAND1",
+     "alias": "HAND1",
+     "kind": "gene",
+     "localization": "nuclear",
+     "stage": "intermediate",
+     "stage_label": "First heart field / cardiac mesoderm",
+     "assays": [
+      "qPCR",
+      "ICC"
+     ],
+     "note": "First-heart-field marker; HAND2 marks second heart field."
+    },
+    {
+     "name": "NKX2-5",
+     "alias": "NKX2.5",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Myocardium",
+     "assays": [
+      "ICC",
+      "qPCR"
+     ],
+     "note": "Myocardial progenitors and cardiomyocytes."
+    },
+    {
+     "name": "TNNT2",
+     "alias": "cardiac troponin T",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Myocardium",
+     "assays": [
+      "ICC",
+      "flow"
+     ],
+     "note": "Myocardial layer and chamber walls."
+    },
+    {
+     "name": "MYL7",
+     "alias": "MLC2a",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Atrial-like myocardium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "With MYL2, shows atrioventricular specification."
+    },
+    {
+     "name": "MYL2",
+     "alias": "MLC2v",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "mature",
+     "stage_label": "Ventricular-like myocardium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Increases with time."
+    },
+    {
+     "name": "WT1",
+     "alias": "WT1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Epicardium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Outer epicardial cells (after the day-7 CHIR pulse in the Lewis-Israeli method)."
+    },
+    {
+     "name": "TJP1",
+     "alias": "ZO-1",
+     "kind": "protein",
+     "localization": "membrane",
+     "stage": "target",
+     "stage_label": "Epicardial epithelium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Used with WT1 to score epicardium."
+    },
+    {
+     "name": "PECAM1",
+     "alias": "CD31",
+     "kind": "protein",
+     "localization": "surface",
+     "stage": "target",
+     "stage_label": "Endothelium / endocardium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Vascular network and chamber lining."
+    },
+    {
+     "name": "NFATC1",
+     "alias": "NFATC1",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "target",
+     "stage_label": "Endocardium",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Endocardial-like lining."
+    },
+    {
+     "name": "VIM",
+     "alias": "vimentin",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "target",
+     "stage_label": "Stromal / fibroblast-like cells",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Mesenchymal component."
+    },
+    {
+     "name": "SOX17",
+     "alias": "SOX17",
+     "kind": "protein",
+     "localization": "nuclear",
+     "stage": "off-target",
+     "stage_label": "Endoderm",
+     "assays": [
+      "ICC"
+     ],
+     "note": "Expected in heart-forming organoids (foregut endoderm) but an unwanted lineage in pure cardiac organoids."
+    }
+   ],
+   "functional_assays": [
+    "Beating rate and rhythm (video)",
+    "Calcium transients",
+    "Optical coherence tomography or confocal imaging of chambers",
+    "Response to teratogens or metabolic stress (for example high glucose)"
+   ],
+   "qc": [
+    "All organoids beating by day 10 (Lewis-Israeli 2021)",
+    "TNNT2+ myocardium with WT1+/ZO-1+ epicardial cells and PECAM1+ endothelium on whole-mount staining",
+    "Three-layer architecture with an NKX2-5+ myocardial layer at day 10 (Drakhlis 2021)"
+   ],
+   "protocols": [
+    {
+     "id": "lewis-israeli-2021-hho",
+     "cell_id": "cardiac_organoid",
+     "name": "Self-assembling heart organoids: three-step Wnt modulation in 96-well plates",
+     "type": "published",
+     "principle": "Single hPSC aggregates in U-bottom wells receive a Wnt on/off sequence (CHIR99021 with low BMP4 and Activin A, then Wnt-C59) to form chambered myocardium, followed by a short second CHIR99021 pulse on day 7 that induces epicardial tissue on the outside.",
+     "source": {
+      "authors": "Lewis-Israeli YR, Wasserman AH, Gabalski MA, et al.",
+      "year": 2021,
+      "journal": "Nat Commun",
+      "title": "Self-assembling human heart organoids for the modeling of cardiac development and congenital heart disease.",
+      "doi": "10.1038/s41467-021-25329-5",
+      "pmid": "34446706",
+      "url": "https://doi.org/10.1038/s41467-021-25329-5"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "organoid",
+     "duration_days": 15,
+     "efficiency": "Beating organoids from day 6 and robust, regular beating in all organoids by day 10",
+     "start_requirements": "hPSCs in Essential 8 Flex. Day -2: seed 10,000 cells per well of a round-bottom ultra-low-attachment 96-well plate in 100 µl E8 Flex + 2 µM thiazovivin, spin 100 g for 3 min. Day -1: remove 50 µl and add 200 µl fresh E8 Flex.",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "4 µM final",
+         "role": "Wnt activation"
+        },
+        {
+         "name": "BMP4",
+         "conc": "1.25 ng/ml",
+         "role": "Improves chamber formation and vascularisation"
+        },
+        {
+         "name": "Activin A",
+         "conc": "1 ng/ml",
+         "role": "Improves chamber formation and vascularisation"
+        }
+       ],
+       "feeding": "24 h",
+       "actions": [
+        "Remove 166 µl (about two thirds) of the medium from each well and add 166 µl of factor-containing medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Rest",
+       "day_start": 1,
+       "day_end": 2,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [],
+       "feeding": "Two-thirds change on day 1",
+       "actions": [
+        "Replace 166 µl with fresh medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac specification (Wnt off)",
+       "day_start": 2,
+       "day_end": 4,
+       "base_medium": "RPMI 1640 + B-27 minus insulin",
+       "factors": [
+        {
+         "name": "Wnt-C59",
+         "conc": "2 µM final",
+         "role": "Porcupine inhibitor; blocks Wnt secretion"
+        }
+       ],
+       "feeding": "48 h",
+       "actions": [
+        "Two-thirds change with Wnt-C59 medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiomyocyte differentiation",
+       "day_start": 4,
+       "day_end": 7,
+       "base_medium": "RPMI 1640 + B-27 minus insulin until day 6, then RPMI 1640 + B-27",
+       "factors": [],
+       "feeding": "Changes on day 4 and day 6",
+       "actions": [
+        "Introduce insulin-containing B-27 on day 6, not earlier"
+       ],
+       "checkpoint": "First beating from about day 6."
+      },
+      {
+       "name": "Epicardial induction and maturation",
+       "day_start": 7,
+       "day_end": 15,
+       "base_medium": "RPMI 1640 + B-27",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "2 µM for 1 h on day 7 only",
+         "role": "Second Wnt pulse; induces pro-epicardial cells"
+        }
+       ],
+       "feeding": "After the 1 h pulse, change medium every 48 h",
+       "actions": [
+        "On day 7 add CHIR99021 for 1 h, then replace with plain medium",
+        "Maintain until analysis (day 15 in the paper)"
+       ],
+       "checkpoint": "All organoids beating by day 10; clearer sarcomeres and internal chambers by day 15."
+      }
+     ],
+     "materials": [
+      "Essential 8 Flex",
+      "Thiazovivin",
+      "Round-bottom ultra-low-attachment 96-well plates",
+      "RPMI 1640",
+      "B-27 minus insulin and B-27",
+      "CHIR99021",
+      "BMP4",
+      "Activin A",
+      "Wnt-C59"
+     ],
+     "tips": [
+      "One organoid per well makes the method compatible with plate-based imaging and screening.",
+      "Never aspirate completely; all changes are partial (166 µl of 250 µl) to avoid losing or damaging the organoid.",
+      "The same authors published step-by-step versions (J Vis Exp 2021, PMID 34605811; Curr Protoc 2022, PMID 35723517)."
+     ],
+     "pitfalls": [
+      "CHIR99021 dose is line-dependent; because changes are partial, calculate the final in-well concentration.",
+      "Organoids contain several cardiac lineages (myocardial, epicardial, endocardial/endothelial, fibroblast), so whole-organoid readouts are not cardiomyocyte-specific."
+     ],
+     "unverified": [
+      "No cell-type composition percentages were captured."
+     ]
+    },
+    {
+     "id": "drakhlis-2021-hfo",
+     "cell_id": "cardiac_organoid",
+     "name": "Heart-forming organoids: Matrigel-embedded aggregates with CHIR99021 then IWP2",
+     "type": "published",
+     "principle": "A single hPSC aggregate is embedded in a Matrigel droplet and taken through a standard Wnt on/off cardiac differentiation; the matrix lets it pattern into layers with myocardium, endocardial-like cells, septum-transversum-like tissue, foregut endoderm and a vascular network.",
+     "source": {
+      "authors": "Drakhlis L, Biswanath S, Farr CM, et al.",
+      "year": 2021,
+      "journal": "Nat Biotechnol",
+      "title": "Human heart-forming organoids recapitulate early heart and foregut development.",
+      "doi": "10.1038/s41587-021-00815-9",
+      "pmid": "33558697",
+      "url": "https://doi.org/10.1038/s41587-021-00815-9"
+     },
+     "vendor": null,
+     "product": null,
+     "catalog": null,
+     "product_url": null,
+     "culture_format": "organoid",
+     "duration_days": 10,
+     "efficiency": null,
+     "start_requirements": "hPSCs in E8 on Geltrex. Day -4: seed 5,000 cells per well of a U-bottom ultra-low-attachment 96-well plate in E8 + 10 µM Y-27632, spin 300 g for 3 min at 4 °C. Day -2: embed each aggregate in a Matrigel droplet, let it set for 1 h, add E8.",
+     "stages": [
+      {
+       "name": "Mesoderm induction",
+       "day_start": 0,
+       "day_end": 1,
+       "base_medium": "RPMI 1640 + 2% B-27 minus insulin",
+       "factors": [
+        {
+         "name": "CHIR99021",
+         "conc": "7.5 µM",
+         "role": "Wnt activation"
+        }
+       ],
+       "feeding": "24 h",
+       "actions": [
+        "Replace E8 with CHIR99021 medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Rest",
+       "day_start": 1,
+       "day_end": 3,
+       "base_medium": "RPMI 1640 + 2% B-27 minus insulin",
+       "factors": [],
+       "feeding": "One change on day 1",
+       "actions": [
+        "Replace with plain medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Cardiac specification (Wnt off)",
+       "day_start": 3,
+       "day_end": 5,
+       "base_medium": "RPMI 1640 + 2% B-27 minus insulin",
+       "factors": [
+        {
+         "name": "IWP2",
+         "conc": "5 µM",
+         "role": "Blocks Wnt secretion"
+        }
+       ],
+       "feeding": "48 h",
+       "actions": [
+        "Add IWP2 medium on day 3"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Progenitor stage",
+       "day_start": 5,
+       "day_end": 7,
+       "base_medium": "RPMI 1640 + 2% B-27 minus insulin",
+       "factors": [],
+       "feeding": "One change on day 5",
+       "actions": [
+        "Replace with plain medium"
+       ],
+       "checkpoint": null
+      },
+      {
+       "name": "Organoid maturation",
+       "day_start": 7,
+       "day_end": 10,
+       "base_medium": "RPMI 1640 + 2% B-27 (with insulin)",
+       "factors": [],
+       "feeding": "Not captured",
+       "actions": [
+        "Switch to complete B-27 on day 7",
+        "Analyse between day 10 and day 13"
+       ],
+       "checkpoint": "Three-layered organoid (inner core, myocardial layer, outer layer); NKX2-5+ myocardial layer."
+      }
+     ],
+     "materials": [
+      "E8 medium",
+      "Geltrex",
+      "Accutase",
+      "Y-27632",
+      "U-bottom ultra-low-attachment 96-well plates",
+      "Matrigel",
+      "RPMI 1640",
+      "B-27 minus insulin and B-27",
+      "CHIR99021",
+      "IWP2"
+     ],
+     "tips": [
+      "An NKX2-5-eGFP reporter line makes the myocardial layer easy to follow.",
+      "The authors listed the Matrigel lots that worked, a sign that lot testing is needed."
+     ],
+     "pitfalls": [
+      "Only 5,000 cells per aggregate formed organoids; 500, 3,500 and 10,000 failed.",
+      "These organoids deliberately contain foregut endoderm (SOX17/SOX2/HNF4A regions) as well as cardiac tissue; they are a model of early heart-foregut development, not a pure cardiac tissue."
+     ],
+     "unverified": [
+      "Feeding interval between day 7 and day 10 was not captured.",
+      "No quantitative success rate captured from the text read."
+     ]
+    }
+   ],
+   "notes": "Organoid-to-organoid variability is real; analyse many organoids per condition. The cavity-forming 'cardioid' method of Hofbauer et al. 2021 Cell (PMID 34019794, doi 10.1016/j.cell.2021.04.034) is an important third option, but its Methods could not be accessed for verification, so it is not listed as a protocol here; the authors' preprint notes that the CHIR99021 concentration is cell-line dependent."
+  }
+ ],
+ "kits": []
+}

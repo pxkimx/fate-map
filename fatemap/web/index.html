@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fate Map</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<script>
+/* Light | Dark: remembered per tool, applied before first paint; honours Toolbox Launcher's ?appearance= and message */
+(function(){var d=document.documentElement,t="dark";try{var s=localStorage.getItem("fm-theme");if(s==="light"||s==="dark")t=s;
+var a=new URLSearchParams(location.search).get("appearance");if(a==="light"||a==="dark"){t=a;localStorage.setItem("fm-theme",a)}}catch(e){}
+d.setAttribute("data-theme",t);
+window.addEventListener("message",function(e){var m=e.data;if(m&&m.type==="toolbox-appearance"&&(m.appearance==="light"||m.appearance==="dark")){if(window.setTheme)window.setTheme(m.appearance);else{d.setAttribute("data-theme",m.appearance);try{localStorage.setItem("fm-theme",m.appearance)}catch(_){}}}});})();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="veil" aria-hidden="true"></div>
+
+<header id="top">
+  <a class="brand" href="#/start" aria-label="Fate Map, start">
+    <img src="icon.svg" width="30" height="30" alt="">
+    <span class="brand-name">Fate Map</span>
+  </a>
+  <nav id="nav" aria-label="Main">
+    <a href="#/start" data-nav="start">Start</a>
+    <a href="#/fates" data-nav="fates">Cell types</a>
+    <a href="#/runs" data-nav="runs">My runs</a>
+    <a href="#/kits" data-nav="kits">Kits</a>
+    <a href="#/reagents" data-nav="reagents">Reagents</a>
+    <a href="#/about" data-nav="about">Sources</a>
+  </nav>
+  <div class="top-right">
+    <div class="search" role="search">
+      <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input id="q" type="search" placeholder="Search cells, markers, reagents" autocomplete="off" spellcheck="false" aria-label="Search cells, markers and reagents">
+      <div id="qres" class="qres" hidden></div>
+    </div>
+    <div id="themePill" class="pill" role="group" aria-label="Appearance">
+      <button type="button" data-t="light" title="Light" aria-label="Light">
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><circle cx="10" cy="10" r="3.6" fill="currentColor"/><g stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M10 1.8v2.4M10 15.8v2.4M1.8 10h2.4M15.8 10h2.4M4.2 4.2l1.7 1.7M14.1 14.1l1.7 1.7M4.2 15.8l1.7-1.7M14.1 5.9l1.7-1.7"/></g></svg>
+        <span>Light</span></button>
+      <button type="button" data-t="dark" title="Dark" aria-label="Dark">
+        <svg viewBox="0 0 20 20" width="15" height="15" aria-hidden="true"><path d="M16.5 12.2A7 7 0 0 1 7.8 3.5a7 7 0 1 0 8.7 8.7z" fill="currentColor"/></svg>
+        <span>Dark</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="app" tabindex="-1"><div class="loading">Loading the protocol catalogue…</div></main>
+
+<footer id="foot">
+  <span>Fate Map <span id="ver"></span></span>
+  <span class="dot">·</span>
+  <span>Protocol summaries are a guide. Read the original paper or kit manual before you start.</span>
+</footer>
+
+<script src="render.js"></script>
+<script src="calc.js"></script>
+<script src="bg.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

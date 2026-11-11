@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+.DS_Store
+*.app/
+*.zip
+dist/
+build/
+.claude/
+# working notes from the research stage (the catalogue in fatemap/data is what ships)
+research/*_work/
+research/pdfs/
+research/work/
+research/*.py

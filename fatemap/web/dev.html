@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Fate Map: archetype sheet</title>
+<style>body{background:#111;color:#ccc;font:12px ui-monospace,monospace;margin:12px}div{display:inline-block;margin:4px}canvas{display:block;width:320px;height:210px;border-radius:6px}</style>
+<p>Every morphology archetype, phase contrast then fluorescence (development page).</p><div id="g"></div>
+<script src="render.js"></script>
+<script>
+const q=new URLSearchParams(location.search), only=q.get("a"), big=q.get("big");
+(only?only.split(","):Micro.archetypes).forEach(a=>{for(const mode of ["phase","fluor"]){const d=document.createElement("div"),c=document.createElement("canvas");c.width=640;c.height=420;if(big){c.style.width="640px";c.style.height="420px"}
+const t0=performance.now();Micro.draw(c,{archetype:a,seed:a,mode,stains:[{color:[60,230,120],loc:q.get("loc")||"cytoplasmic",frac:.8,side:"low"},{color:[255,70,90],loc:"nuclear",frac:.25,side:"high"}]});
+d.append(c,a+" · "+mode+" · "+Math.round(performance.now()-t0)+" ms");document.getElementById("g").append(d)}});
+</script>
