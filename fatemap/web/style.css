@@ -374,4 +374,4 @@ input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); 
 .prep-row.today { border-color: var(--accent); background: var(--accent-soft); }
 .prep-row .pd { display: grid; font-size: 14px; } .prep-row .pd .faint { font-size: 12px; }
 @media (max-width: 980px) { .today-grid { grid-template-columns: 1fr; } .note { grid-template-columns: 1fr auto; } .note .nd { grid-column: 1 / -1; display: flex; gap: 10px; } .perfeed { margin-left: 0; text-align: left; } }
-@media print { .noteform, .calc-controls input, .today-side .scope { display: none !important; } .prep-row, .calc-stage, .note { border-color: #bbb; } }
+@media print { .noteform, .today-side .scope { display: none !important; } .prep-row, .calc-stage, .note { border-color: #bbb; } }

@@ -142,7 +142,7 @@
   function viewFates(v) {
     const st = startObj(), all = cellsFor(st.pool);
     v.dataset.title = st.name;
-    add(v, h("div", { class: "crumbs" }, h("a", { href: "#/start" }, "Start"), "›", st.name));
+    add(v, h("div", { class: "crumbs" }, h("a", { href: "#/start" }, "Start"), h("span", {}, "›"), h("span", {}, st.name)));
     add(v, h("div", { class: "fates-head" },
       h("div", {}, h("div", { class: "kicker" }, "Starting from " + st.name), h("h1", { style: { "font-size": "clamp(26px,3.4vw,40px)", "margin-top": "6px" } }, "What do you want to make?")),
       h("div", { class: "pill", role: "group", "aria-label": "View" },
@@ -283,13 +283,15 @@
     const st = DB.starts.find((x) => x.id === START && x.pool === c.start) || DB.starts.find((x) => x.pool === c.start);
     if (st && st.id !== START) { START = st.id; store.set("fm-start", START); }
     v.dataset.title = c.name; v.dataset.lin = c.lineage;
-    add(v, h("div", { class: "crumbs" }, h("a", { href: "#/start" }, "Start"), "›", h("a", { href: "#/fates" }, st ? st.name : "Cell types"), "›", c.group, "›", c.name));
+    add(v, h("div", { class: "crumbs" }, h("a", { href: "#/start" }, "Start"), h("span", {}, "›"), h("a", { href: "#/fates" }, st ? st.name : "Cell types"), h("span", {}, "›"), h("span", {}, c.group), h("span", {}, "›"), h("span", {}, c.name)));
 
     // viewer state
     const stages = c.morphology.stages;
     const V = { i: stages.length - 1, mode: "phase", g: null, r: null };
     const stainable = c.markers.filter((m) => STAINABLE.includes(m.localization) && (m.assays || []).some((a) => /icc|flow|if/i.test(a)));
-    V.g = (stainable.find((m) => m.stage === "target") || stainable.find((m) => m.stage === "mature") || stainable[0] || {}).name || "";
+    // green: a target marker that outlines the cell's shape if there is one (a nuclear stain alone hides the morphology)
+    const shapes = (m) => ["cytoskeletal", "cytoplasmic", "membrane", "surface"].includes(m.localization);
+    V.g = (stainable.find((m) => m.stage === "target" && shapes(m)) || stainable.find((m) => m.stage === "target") || stainable.find((m) => m.stage === "mature") || stainable[0] || {}).name || "";
     V.r = (stainable.find((m) => m.stage === "pluripotent") || {}).name || "";
     const view = h("div", { class: "panel viewer" });
     function frac(m, t) {
@@ -724,7 +726,7 @@
   let RT = store.get("fm-runtab", "today");
   function viewRun(v, parts) {
     const run = NB.runs.find((r) => r.id === parts[0]);
-    add(v, h("div", { class: "crumbs" }, h("a", { href: "#/runs" }, "My runs"), "›", run ? run.name : "Not found"));
+    add(v, h("div", { class: "crumbs" }, h("a", { href: "#/runs" }, "My runs"), h("span", {}, "›"), h("span", {}, run ? run.name : "Not found")));
     if (!run) return add(v, h("div", { class: "panel empty" }, "That run is not in this notebook. ", h("a", { href: "#/runs" }, "Back to my runs")));
     v.dataset.title = run.name;
     const c = runCell(run), p = runProto(run);
