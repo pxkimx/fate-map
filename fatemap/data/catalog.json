@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built": "2026-11-10",
+ "built": "2026-11-22",
  "starts": [
   {
    "id": "human_ipsc",
@@ -19770,11 +19770,11 @@
      "kind": "protein",
      "localization": "surface",
      "stage": "off-target",
-     "stage_label": "Pericyte-like cells",
+     "stage_label": "Pericyte-like cells (CSPG4+/MYH11-)",
      "assays": [
       "flow"
      ],
-     "note": "Small subpopulation (2-8%) in the Cheung protocol."
+     "note": "Only off-target when MYH11 is absent. Cheung 2012 found 3-8% of the intermediate populations and 2-7% of early SMCs CSPG4+, with little or no CSPG4/MYH11 co-expression, and that pericyte-like fraction fell away by day 12. NG2 is a mural marker that smooth muscle cells express in their own right, so do not read CSPG4 alone as contamination."
     }
    ],
    "functional_assays": [
@@ -19960,7 +19960,7 @@
       "Choose the intermediate to match the embryonic origin of the vessel being modelled (for example neuroectoderm/neural crest for the ascending aorta and arch, paraxial mesoderm for the descending aorta)."
      ],
      "pitfalls": [
-      "A small fraction of cells (2-8%) express the pericyte marker CSPG4 (NG2) during differentiation.",
+      "A pericyte-like fraction appears during differentiation: 3-8% of the intermediate populations and 2-7% of early SMCs were CSPG4 (NG2)-positive, with little or no MYH11 co-expression, and it diminished by day 12 as the conditions selected for SMCs. Judge it on CSPG4 with MYH11 together, not CSPG4 alone, since smooth muscle cells also express NG2.",
       "The CDM system with Activin/FGF2 maintenance is different from mTeSR1/E8 culture; adaptation may be needed."
      ],
      "unverified": [
@@ -20060,7 +20060,7 @@
      "schedule_unverified": false
     }
    ],
-   "notes": "Smooth muscle identity is a spectrum: ACTA2 and TAGLN are also expressed by fibroblasts and pericytes, so include MYH11 and a contraction assay. Embryonic origin (lateral plate, paraxial mesoderm or neural crest) changes cell behaviour and should match the disease being modelled."
+   "notes": "Smooth muscle identity is a spectrum: ACTA2 and TAGLN are also expressed by fibroblasts and pericytes, so include MYH11 and a contraction assay. Embryonic origin (lateral plate, paraxial mesoderm or neural crest) changes cell behaviour and should match the disease being modelled. CSPG4 (NG2) is listed here as off-target, but it is a mural marker rather than a pericyte-specific one: it is expressed by smooth muscle cells in vivo, including immature and arteriolar ones, and is a target gene of the myocardin/MRTF-SRF contractile programme. Treat CSPG4+/MYH11- as the pericyte-like cell and CSPG4+/MYH11+ as smooth muscle, not contamination."
   },
   {
    "id": "m_cardiomyocyte",
