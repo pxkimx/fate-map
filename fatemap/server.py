@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 
 from . import __version__
 from .lifecycle import Lifecycle
-from .store import Store
+from .store import Conflict, Store
 
 HERE = Path(__file__).resolve().parent
 WEB = HERE / "web"
@@ -88,10 +88,15 @@ class Handler(BaseHTTPRequestHandler):
             if n > STORE.MAX_BYTES:
                 return self._json({"error": "Your notebook is too large to save."}, 413)
             try:
-                STORE.write(json.loads(self.rfile.read(n) or b"{}"))
+                body = json.loads(self.rfile.read(n) or b"{}")
+                rev = body.get("rev") if isinstance(body, dict) else None
+                saved = STORE.write(body, rev if isinstance(rev, int) else None)
+            except Conflict as e:
+                # someone else (another window) saved since this page loaded: never overwrite them
+                return self._json({"error": "The notebook was changed somewhere else.", "conflict": True, "rev": e.current}, 409)
             except (ValueError, OSError) as e:
                 return self._json({"error": f"Could not save: {e}"}, 400)
-            return self._json({"ok": True})
+            return self._json({"ok": True, "rev": saved["rev"]})
         if n:
             self.rfile.read(min(n, 1 << 20))
         if u.path == "/api/quit":

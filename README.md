@@ -43,10 +43,28 @@ kit manual before starting, and expect to tune any protocol to your own line.
 
 The micrographs are simulations drawn from published descriptions, not photographs or measured data.
 
+## Your notebook
+
+Runs, notes and stocks live in one file, `notebook.json`, in `~/Library/Application Support/Fate Map`
+(set `FM_HOME` to put it elsewhere; the tests always do). The app saves the whole file at once, so three
+things keep it safe: a save is written to a temporary file and then swapped in, so a crash cannot leave
+half a notebook; every save must quote the revision it read, so a window that failed to load or that is
+behind another window is refused instead of overwriting newer work (the page then says so and stops
+saving until you reload); and the previous version is kept as `notebook.json.bak`, with the last 20 dated
+copies in `backups/`.
+
 ## Tests
 
+The tests need pytest, which the app itself does not. Use any Python 3.9+ that has it:
+
 ```bash
-python3 -m pytest tests
+python3 -m pytest tests          # if your python3 has pytest
+```
+
+If that says `No module named pytest`, make a throwaway environment for it:
+
+```bash
+python3 -m venv /tmp/fatemap-test-venv && /tmp/fatemap-test-venv/bin/pip -q install pytest && /tmp/fatemap-test-venv/bin/python -m pytest tests
 ```
 
 MIT licence. Copyright (c) 2026 Paul H. Kim.

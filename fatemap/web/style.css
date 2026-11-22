@@ -375,3 +375,10 @@ input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); 
 .prep-row .pd { display: grid; font-size: 14px; } .prep-row .pd .faint { font-size: 12px; }
 @media (max-width: 980px) { .today-grid { grid-template-columns: 1fr; } .note { grid-template-columns: 1fr auto; } .note .nd { grid-column: 1 / -1; display: flex; gap: 10px; } .perfeed { margin-left: 0; text-align: left; } }
 @media print { .noteform, .today-side .scope { display: none !important; } .prep-row, .calc-stage, .note { border-color: #bbb; } }
+
+/* the notebook could not be loaded, or another window owns it: saving is off and the page says so */
+#nbblock { position: sticky; top: 0; z-index: 50; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 10px 26px; background: var(--warn-soft); border-bottom: 1px solid var(--warn); color: var(--text); font-size: 14px; }
+#nbblock b { color: var(--warn); }
+#nbblock span { color: var(--muted); }
+#nbblock .btn { margin-left: auto; }
+@media print { #nbblock { display: none !important; } }

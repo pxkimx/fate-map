@@ -24,10 +24,12 @@
     for (let i = 2; i < arguments.length; i++) add(el, arguments[i]);
     return el;
   }
-  function add(el, kid) {
-    if (kid == null || kid === false) return;
-    if (Array.isArray(kid)) kid.forEach((k) => add(el, k));
-    else el.appendChild(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  function add(el, ...kids) {       // variadic: add(el, a, b, c) used to keep only `a` and drop the rest
+    kids.forEach((kid) => {
+      if (kid == null || kid === false) return;
+      if (Array.isArray(kid)) add(el, ...kid);
+      else el.appendChild(kid.nodeType ? kid : document.createTextNode(String(kid)));
+    });
   }
   const s = (tag, attrs, ...kids) => h(tag, Object.assign({ ns: 1 }, attrs), ...kids);
   const store = {
@@ -635,7 +637,10 @@
   }
 
   // ============================================================ notebook: runs, notes, reagent calculator
-  let NB = { version: 1, runs: [], stocks: {} };
+  let NB = { version: 1, rev: 0, runs: [], stocks: {} };
+  // Saving writes the whole notebook, so a page that does not hold the real one must never save over it.
+  // "loaded" after a successful read; "blocked" after a failed read or a clash with another window.
+  let NB_STATE = "loading";
   let saveTimer = 0;
   const toast = h("div", { id: "toast", role: "status", "aria-live": "polite" });
   document.body.appendChild(toast);
@@ -643,11 +648,38 @@
     toast.textContent = msg; toast.className = "show" + (bad ? " bad" : "");
     clearTimeout(flash.t); flash.t = setTimeout(() => { toast.className = ""; }, bad ? 5000 : 1300);
   }
+  function blockSaving(why) {
+    NB_STATE = "blocked";
+    clearTimeout(saveTimer);
+    let bar = $("#nbblock");
+    if (!bar) {
+      bar = h("div", { id: "nbblock", role: "alert" });
+      document.body.insertBefore(bar, document.body.firstChild);
+    }
+    bar.innerHTML = "";
+    add(bar, h("b", {}, "Your notebook is not being saved."), h("span", {}, why),
+      h("button", { class: "btn", type: "button", onclick: () => location.reload() }, "Reload the page"));
+  }
   function saveNB() {
+    if (NB_STATE !== "loaded") {
+      blockSaving(NB_STATE === "loading"
+        ? "The app is still reading it, so this change was not written. Reload and try again."
+        : "This window does not have the current notebook, so nothing was written over it.");
+      return;
+    }
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
       fetch("/api/store", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(NB) })
-        .then((r) => r.json()).then((d) => { if (d.error) throw new Error(d.error); flash("Saved"); })
+        .then((r) => r.json().then((d) => ({ status: r.status, d })))
+        .then(({ status, d }) => {
+          if (status === 409) {
+            blockSaving("Another Fate Map window saved it after this one opened. Your changes here were not written and the other window's notebook is intact. Reload to see it, then make the change again.");
+            return;
+          }
+          if (d.error) throw new Error(d.error);
+          NB.rev = d.rev;        // the revision this page must quote on its next save
+          flash("Saved");
+        })
         .catch((e) => flash("Could not save your notebook: " + e.message, true));
     }, 250);
   }
@@ -954,7 +986,12 @@
   document.addEventListener("keydown", (e) => { if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); q.focus(); } });
 
   // ------------------------------------------------------------ boot
-  fetch("/api/store").then((r) => r.json()).then((d) => { if (d && Array.isArray(d.runs)) NB = d; }).catch(() => flash("Could not read your notebook", true))
+  fetch("/api/store").then((r) => r.json())
+    .then((d) => {
+      if (!d || !Array.isArray(d.runs)) throw new Error("it could not be read");
+      NB = d; NB_STATE = "loaded";
+    })
+    .catch((e) => blockSaving("It could not be read (" + e.message + "), so this window is read-only rather than risk writing an empty notebook over it. Your file on disk has not been touched."))
     .then(() => fetch("/api/catalog")).then((r) => r.json()).then((d) => {
     if (d.error) throw new Error(d.error);
     d.cell_types.forEach((c) => {

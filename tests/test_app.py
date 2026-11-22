@@ -75,9 +75,10 @@ def test_marker_vocabulary():
 
 
 @pytest.fixture(scope="module")
-def server():
+def server(tmp_path_factory):
     port = free_port()
-    env = dict(os.environ, FM_PARENT_PID="")
+    # FM_HOME: a test must never read or write the user's real notebook
+    env = dict(os.environ, FM_PARENT_PID="", FM_HOME=str(tmp_path_factory.mktemp("home")))
     pr = subprocess.Popen([sys.executable, "-m", "fatemap.server", "--port", str(port), "--no-browser", "--keep-alive"], cwd=ROOT, env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     for _ in range(50):
         try:
@@ -108,10 +109,10 @@ def test_rejects_foreign_host(server):
     assert e.value.code == 403
 
 
-def test_quits_when_window_closes():
+def test_quits_when_window_closes(tmp_path):
     port = free_port()
     pr = subprocess.Popen([sys.executable, "-m", "fatemap.server", "--port", str(port), "--no-browser"], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                          env=dict(os.environ, FM_PARENT_PID=""))
+                          env=dict(os.environ, FM_PARENT_PID="", FM_HOME=str(tmp_path)))
     for _ in range(50):
         try:
             urllib.request.urlopen(f"http://localhost:{port}/api/health", timeout=1); break
@@ -134,8 +135,8 @@ def test_store_roundtrip_and_backup(tmp_path, monkeypatch):
     from fatemap.store import Store
     s = Store()
     assert s.read()["runs"] == []
-    s.write({"runs": [{"id": "a", "notes": []}], "stocks": {"chir99021": "10 mM"}})
-    s.write({"runs": [{"id": "a", "notes": [{"text": "µ ✓"}]}], "stocks": {}})
+    s.write({"runs": [{"id": "a", "notes": []}], "stocks": {"chir99021": "10 mM"}}, None)
+    s.write({"runs": [{"id": "a", "notes": [{"text": "µ ✓"}]}], "stocks": {}}, 1)
     d = s.read()
     assert d["runs"][0]["notes"][0]["text"] == "µ ✓"
     assert (tmp_path / "notebook.json.bak").exists()
@@ -149,7 +150,7 @@ def test_store_rejects_bad_payload(tmp_path, monkeypatch):
     s = Store()
     for bad in ([], {"runs": "x"}, {"runs": [], "stocks": []}, "text"):
         with pytest.raises(ValueError):
-            s.write(bad)
+            s.write(bad, None)
 
 
 def test_store_api_roundtrip(tmp_path):
@@ -162,7 +163,7 @@ def test_store_api_roundtrip(tmp_path):
                 urllib.request.urlopen(f"http://localhost:{port}/api/health", timeout=1); break
             except OSError:
                 time.sleep(0.1)
-        body = json.dumps({"runs": [{"id": "r1", "notes": []}], "stocks": {}}).encode()
+        body = json.dumps({"runs": [{"id": "r1", "notes": []}], "stocks": {}, "rev": 0}).encode()
         req = urllib.request.Request(f"http://localhost:{port}/api/store", data=body, method="POST", headers={"Content-Type": "application/json"})
         assert json.load(urllib.request.urlopen(req, timeout=5))["ok"]
         assert json.load(urllib.request.urlopen(f"http://localhost:{port}/api/store", timeout=5))["runs"][0]["id"] == "r1"
@@ -205,3 +206,78 @@ print(fail.length ? "FAIL " + fail.join(" | ") : "OK");
 ''' % (ROOT / "fatemap/web/calc.js"))
     out = subprocess.run([str(JSC), str(script)], capture_output=True, text=True).stdout
     assert "OK" in out, out
+
+
+# ---------------------------------------------------------------- the notebook must not be overwritten
+def test_write_needs_the_revision_it_read(tmp_path, monkeypatch):
+    monkeypatch.setenv("FM_HOME", str(tmp_path))
+    from fatemap.store import Conflict, Store
+    s = Store()
+    assert s.read()["rev"] == 0
+    first = s.write({"runs": [{"id": "real", "notes": [{"text": "bench records"}]}], "stocks": {}}, None)
+    assert first["rev"] == 1
+
+    # a page that never loaded (no revision) must not flatten a notebook that has something in it
+    with pytest.raises(Conflict):
+        s.write({"runs": [], "stocks": {}}, None)
+    # a page holding a stale revision (another window saved meanwhile) must not win either
+    with pytest.raises(Conflict):
+        s.write({"runs": [], "stocks": {}}, 0)
+    assert s.read()["runs"][0]["id"] == "real"
+
+    # quoting the current revision works, and moves it on
+    assert s.write({"runs": [{"id": "real"}, {"id": "second"}], "stocks": {}}, 1)["rev"] == 2
+    assert len(s.read()["runs"]) == 2
+
+
+def test_two_windows_do_not_overwrite_each_other(tmp_path, monkeypatch):
+    monkeypatch.setenv("FM_HOME", str(tmp_path))
+    from fatemap.store import Conflict, Store
+    s = Store()
+    s.write({"runs": [{"id": "a"}], "stocks": {}}, None)
+    both_read = s.read()["rev"]
+    s.write({"runs": [{"id": "a"}, {"id": "from-window-1"}], "stocks": {}}, both_read)
+    with pytest.raises(Conflict):
+        s.write({"runs": [{"id": "a"}, {"id": "from-window-2"}], "stocks": {}}, both_read)
+    ids = [r["id"] for r in s.read()["runs"]]
+    assert ids == ["a", "from-window-1"]
+
+
+def test_dated_backups_are_kept(tmp_path, monkeypatch):
+    monkeypatch.setenv("FM_HOME", str(tmp_path))
+    import fatemap.store as st
+    monkeypatch.setattr(st, "BACKUP_EVERY_S", 0.0)     # one a minute normally; every write here
+    monkeypatch.setattr(st, "KEEP_BACKUPS", 3)
+    s = st.Store()
+    rev = None
+    for i in range(6):
+        rev = s.write({"runs": [{"id": f"run{i}"}], "stocks": {}}, rev)["rev"]
+    kept = sorted((tmp_path / "backups").glob("notebook-*.json"))   # the name sorts chronologically
+    assert len(kept) == 3, kept
+    assert json.loads(kept[-1].read_text())["runs"][0]["id"] == "run4"   # the version before the last write
+
+
+def test_api_rejects_a_stale_save(tmp_path):
+    port = free_port()
+    pr = subprocess.Popen([sys.executable, "-m", "fatemap.server", "--port", str(port), "--no-browser", "--keep-alive"], cwd=ROOT,
+                          env=dict(os.environ, FM_HOME=str(tmp_path), FM_PARENT_PID=""), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:
+        for _ in range(50):
+            try:
+                urllib.request.urlopen(f"http://localhost:{port}/api/health", timeout=1); break
+            except OSError:
+                time.sleep(0.1)
+
+        def post(payload):
+            req = urllib.request.Request(f"http://localhost:{port}/api/store", data=json.dumps(payload).encode(),
+                                         method="POST", headers={"Content-Type": "application/json"})
+            return json.load(urllib.request.urlopen(req, timeout=5))
+
+        assert post({"runs": [{"id": "r1"}], "stocks": {}, "rev": 0})["rev"] == 1
+        with pytest.raises(urllib.error.HTTPError) as e:
+            post({"runs": [], "stocks": {}, "rev": 0})          # a window that loaded before that save
+        assert e.value.code == 409
+        assert json.load(e.value)["conflict"] is True
+        assert json.load(urllib.request.urlopen(f"http://localhost:{port}/api/store", timeout=5))["runs"][0]["id"] == "r1"
+    finally:
+        pr.kill()
