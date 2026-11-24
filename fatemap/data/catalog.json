@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "built": "2026-11-22",
+ "built": "2026-11-24",
  "starts": [
   {
    "id": "human_ipsc",
@@ -23231,7 +23231,21 @@
       "ICC",
       "flow"
      ],
-     "note": "Route- and medium-dependent, not a plain purity test. Gastfriend 2021 defines its brain pericyte-like cells as alpha-SMA-low (they are CNN1/TAGLN-positive), but Kumar 2017 specifies DLK1+ arteriolar pericytes that are contractile by design, and TGF-beta1 or serum raises alpha-SMA in genuine pericytes. To test for smooth muscle contamination use MYH11, which pericytes do not express."
+     "note": "Route- and medium-dependent, not a plain purity test. Gastfriend 2021 defines its brain pericyte-like cells as alpha-SMA-low (they are CNN1/TAGLN-positive), but Kumar 2017 specifies DLK1+ arteriolar pericytes that are contractile by design, and TGF-beta1 or serum raises alpha-SMA in genuine pericytes. MYH11 is the more specific smooth muscle marker, though not an absolute one (see MYH11)."
+    },
+    {
+     "name": "MYH11",
+     "alias": "smooth muscle myosin heavy chain",
+     "kind": "protein",
+     "localization": "cytoskeletal",
+     "stage": "off-target",
+     "stage_label": "Smooth muscle cells",
+     "assays": [
+      "flow",
+      "ICC",
+      "western"
+     ],
+     "note": "The most restrictive smooth muscle marker available and a better discriminator than alpha-SMA, but not absolute: Myh11-CreERT2 mice label pericytes as well as smooth muscle in various tissues (Deaton 2022), and Myh11 came up among kidney pericyte markers (Baek 2022). Read it with alpha-SMA and the pericyte panel rather than alone, and compare against a smooth muscle differentiation of the same line."
     },
     {
      "name": "CD34",
@@ -23622,7 +23636,7 @@
      "schedule_unverified": false
     }
    ],
-   "notes": "There is no single definitive pericyte marker, and published 'pericytes' differ by route (neural crest versus mesoderm) and medium, so state the route and show a marker panel plus an endothelial co-culture assay. Orlova et al. 2014 Nat Protoc (PMID 24874816) derives pericytes from the CD31-negative fraction of an endothelial differentiation; its step values could not be checked here. Alpha-SMA is listed as off-target, but treat it as route- and medium-dependent rather than a purity threshold: capillary pericytes are alpha-SMA-negative while pre- and post-capillary, ensheathing and arteriolar pericytes express it in vivo, and in culture TGF-beta1, serum and passage all raise it in genuine pericytes. MYH11 is the marker that separates a pericyte from a smooth muscle cell."
+   "notes": "There is no single definitive pericyte marker, and published 'pericytes' differ by route (neural crest versus mesoderm) and medium, so state the route and show a marker panel plus an endothelial co-culture assay. Orlova et al. 2014 Nat Protoc (PMID 24874816) derives pericytes from the CD31-negative fraction of an endothelial differentiation; its step values could not be checked here. Alpha-SMA is listed as off-target, but treat it as route- and medium-dependent rather than a purity threshold: capillary pericytes are alpha-SMA-negative while pre- and post-capillary, ensheathing and arteriolar pericytes express it in vivo, and in culture TGF-beta1, serum and passage all raise it in genuine pericytes. MYH11 is the most specific smooth muscle marker and the better discriminator, but Myh11 lineage drivers also label some pericytes, so no single marker separates the two; use the panel."
   },
   {
    "id": "epicardial_cell",
